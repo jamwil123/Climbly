@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "mountain-list-app",
+    "slug": "mountain-list-app",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "mountain-list-app"
+}
