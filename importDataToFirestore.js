@@ -10,7 +10,7 @@ const serviceAccount = {
     "type": "service_account",
     "project_id": "hills-app-test-db",
     "private_key_id": process.env.private_key_id,
-    "private_key": process.env.private_key,
+    "private_key": process.env.private_key.replace(/\\n/g, '\n'),
     "client_email": process.env.client_email,
     "client_id": process.env.private_key.client_id,
     "auth_uri": "https://accounts.google.com/o/oauth2/auth",
@@ -36,7 +36,7 @@ const jsonToFirestore = async () => {
     await firestoreService.initializeApp(serviceAccount, firebaseConfig.databaseURL);
     console.log('Firebase Initialized');
 
-    await firestoreService.restore('./data/hillsDevDB.json');
+    await firestoreService.restore('./data/testData.json');
     console.log('Upload Success');
   }
   catch (error) {
