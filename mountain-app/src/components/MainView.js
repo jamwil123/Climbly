@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, FlatList, View } from "react-native";
+import { StyleSheet, FlatList, View, SafeAreaView } from "react-native";
 import { getMountains } from "../utils/api";
 import HillCard from "./HillCard.js";
 
@@ -34,11 +34,12 @@ const styles = StyleSheet.create({
   mainview: {
     flex: 8,
     backgroundColor: 0xaaaa00ff,
-    alignItems: "center",
+    alignItems: "stretch",
     justifyContent: "center",
     width: "100%",
     height: "100%",
-    display: "flex",
+    padding: 0
+    // display: "flex",
   },
 });
 
