@@ -11,13 +11,13 @@ const Footer = () => {
 
 const styles = StyleSheet.create({
     footer: {
-        flex: 1,
+        // flex: 1,
         // marginBottom: 40,
-        backgroundColor: 0x44aa44ff,
+        backgroundColor: 0xAAADC4FF,
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
-        height: 100
+        height: 75
     },
   });
 

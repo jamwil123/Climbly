@@ -32,8 +32,8 @@ const MainView = () => {
 
 const styles = StyleSheet.create({
   mainview: {
-    flex: 8,
-    backgroundColor: 0xaaaa00ff,
+    // flex: 8,
+    backgroundColor: 0x2E2D4DFF,
     alignItems: "stretch",
     justifyContent: "center",
     width: "100%",

@@ -1,35 +1,62 @@
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View, Dimensions, ColorPropType } from "react-native";
 import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
 
+const screenSize = Dimensions.get("screen")
+
 const HillCard = (props) => {
+  let hillname = props.hillObject.hillname
+  hillname.includes('[') ? hillname = hillname.slice(0, hillname.indexOf('[')) : hillname
 
   return (
     <View style={styles.hillcard}>
-      <Image
-        source={{ uri: props.hillObject.img_hres_url }}
-        style={styles.image}
-      ></Image>
-      <Text>{props.hillObject.hillname}</Text>
+      <View>
+        <Image
+          source={{ uri: props.hillObject.img_hres_url }}
+          style={styles.image}
+        ></Image>
+      </View>
+      <View style={styles.textbox}>
+        <Text style={styles.textbox_hillname}>{hillname}</Text>
+        <Text style={styles.textbox_hillheight}>{props.hillObject.feet} feet</Text>   
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   hillcard: {
-    flex: 1,
-    backgroundColor: 0xffff00ff,
+    backgroundColor: 0x2B3A67FF,
     alignItems: "center",
-    justifyContent: "center",
-    // width: "100%",
-    height: 200,
-    marginTop: 3,
+    height: screenSize.height * 0.38,
+    marginTop: 10,
+    padding: 15,
     marginBottom: 3,
+    marginLeft: 6,
+    marginRight: 6,
+    borderRadius: 25,
+    borderColor: 0xAAADC4FF,
+    borderWidth: 1
   },
   image: {
-    width: 200,
-    minHeight: 100,
-    maxHeight: 200
+    borderRadius: 14,
+    width: screenSize.width * 0.9,
+    height: screenSize.height * 0.25
+  },
+  textbox: {
+    width: '100%'
+  },
+  textbox_hillname: {
+    color: 0xFFFFFFFF,
+    fontSize: 30,
+    fontWeight: 'bold',
+    marginTop: 10
+  },
+  textbox_hillheight: {
+    textAlign: "right",
+    color: 0xFFFFFFFF,
+    fontSize: 20,
+    marginTop: 10
   }
 });
 

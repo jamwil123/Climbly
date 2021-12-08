@@ -1,8 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { Header } from 'react-native/Libraries/NewAppScreen';
 
+const screen = Dimensions.get("screen")
+
 const header = () => {
+
     return (
         <View style={styles.header}>
             <Text>Header</Text>
@@ -12,13 +15,12 @@ const header = () => {
 
 const styles = StyleSheet.create({
     header: {
-        flex: 1,
         marginTop: 40,
-        backgroundColor: 0x44aa44ff,
+        backgroundColor: 0xAAADC4FF,
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
-        height: 100
+        height: 75
     },
   });
 
