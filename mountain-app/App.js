@@ -1,34 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import {NativeRouter, Route, Routes, Link} from 'react-router-native'
-import { StyleSheet, Text, View } from 'react-native';
-import Header from './components/Header';
-import MainView from './components/MainView';
-import Footer from './components/Footer';
-import LoginPage from './components/LoginPage';
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import Header from "./src/components/Header";
+import MainView from "./src/components/MainView";
+import Footer from "./src/components/Footer";
+import { Provider as PaperProvider, DefaultTheme } from "react-native-paper";
 
 export default function App() {
-  
+  const theme = {
+    ...DefaultTheme,
+    roundness: 2,
+    colors: {
+      ...DefaultTheme.colors,
+      primary: "#3498db",
+      accent: "#f1c40f",
+    },
+  };
   return (
-    <View style={styles.container}>
-      <Header />
-      <MainView />
-      {/* <NativeRouter>
-        <Routes>
-          <Route exact path='/' component={<MainView />}></Route >
-          <Route path='/hill/:hillnumber' component={<MainView />}></Route>
-          <Route path='/loggin' component={<LoginPage />}></Route>
-        </Routes>
-      </NativeRouter> */}
-      <Footer />
-    </View>
+    <PaperProvider theme={theme}>
+      <View style={styles.container}>
+        <Header />
+        <MainView />
+        <Footer />
+      </View>
+    </PaperProvider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
 
     // alignItems: 'center',
     // justifyContent: 'center',
