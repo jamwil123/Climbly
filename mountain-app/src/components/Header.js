@@ -1,11 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
-import { Header } from 'react-native/Libraries/NewAppScreen';
 
 const screen = Dimensions.get("screen")
 
-const header = () => {
-
+const Header = () => {
     return (
         <View style={styles.header}>
             <Text>Header</Text>
@@ -24,4 +22,4 @@ const styles = StyleSheet.create({
     },
   });
 
-export default header;
+export default Header;

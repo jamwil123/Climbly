@@ -1,10 +1,10 @@
 import React, {useRef} from "react";
-import { StyleSheet, View, Text, Button} from "react-native";
+import { StyleSheet } from "react-native";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Header from "./src/components/Header";
 import MainView from "./src/components/MainView";
 import Footer from "./src/components/Footer";
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator, CardStyleInterpolators } from '@react-navigation/native-stack';
 import SingleMountain from './src/components/SingleMountain'
 import UserMain from "./src/components/UserMain"
 

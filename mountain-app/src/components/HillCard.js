@@ -1,6 +1,5 @@
 import React from "react";
-import { Image, StyleSheet, Text, View, Dimensions, ColorPropType } from "react-native";
-import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
+import { Image, StyleSheet, Text, View, Dimensions } from "react-native";
 
 const screenSize = Dimensions.get("screen")
 

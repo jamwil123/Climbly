@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button} from 'react-native';
-import { NavigationContainer } from "@react-navigation/native";
 
 const Footer = ({navigationRef}) => {
     return (
@@ -15,8 +14,6 @@ const Footer = ({navigationRef}) => {
 
 const styles = StyleSheet.create({
     footer: {
-        // flex: 1,
-        // marginBottom: 40,
         backgroundColor: 0xAAADC4FF,
         alignItems: 'center',
         justifyContent: 'center',
