@@ -5,7 +5,11 @@ const SingleMountain = ({route}) => {
     console.log(route.params)
     return (
         <View>
-            <Text>{route.params.mountain.hillname}</Text>
+            <View>
+                <Text>{route.params.mountain.hillname}</Text>
+            </View>
+            <View>
+            </View>
         </View>
     );
 };
