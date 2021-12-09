@@ -5,6 +5,7 @@ import MainView from "./src/components/MainView";
 import Footer from "./src/components/Footer";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator, CardStyleInterpolators } from '@react-navigation/native-stack';
+import SingleMountain from './src/components/SingleMountain'
 
 const Stack = createNativeStackNavigator(); 
 
@@ -19,6 +20,7 @@ export default function App() {
               headerShown: true,
               }} 
             />
+            <Stack.Screen name='SingleMountainPage' component={SingleMountain}/>
           </Stack.Navigator>
           <Footer />
         </NavigationContainer> 

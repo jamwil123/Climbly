@@ -1,9 +1,10 @@
+import { NavigationContainer } from "@react-navigation/native";
 import React, { useState, useEffect } from "react";
-import { StyleSheet, FlatList, View, SafeAreaView } from "react-native";
+import { StyleSheet, FlatList, View, SafeAreaView, TouchableHighlight } from "react-native";
 import { getMountains } from "../utils/api";
 import HillCard from "./HillCard.js";
 
-const MainView = () => {
+const MainView = ({navigation}) => {
   const [mountains, setMountain] = useState([]);
   useEffect(() => {
     getMountains().then((response) => {
@@ -15,15 +16,16 @@ const MainView = () => {
     <View style={styles.mainview}>
       <FlatList
         data={mountains}
-        renderItem={({ item, index, separators }) => (
+        renderItem={({ item, index, separators }) => {return (
+          <TouchableHighlight onPress={() => navigation.push('SingleMountainPage')} underlayColor="white">
           <HillCard
-            key={item.key}
+            key={item.hillnumber}
             hillObject={item}
-            onPress={() => this._onPress(item)}
             onShowUnderlay={separators.highlight}
             onHideUnderlay={separators.unhighlight}
           ></HillCard>
-        )}
+          </TouchableHighlight>
+        )}}
         keyExtractor={(item) => item.id}
       />
     </View>
