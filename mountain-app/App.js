@@ -11,18 +11,22 @@ import UserMain from "./src/components/UserMain"
 const Stack = createNativeStackNavigator(); 
 
 export default function App() {
-  const mainViewRef = useRef()
+
+  const navigationRef = useRef()
+
   return (
-        <NavigationContainer style={styles.container}>
-          <Stack.Navigator>
-            <Stack.Screen name="Mountain App" ref={mainViewRef} component={MainView} 
-              options={{
-              headerShown: true,
-              }} 
-            />
-            <Stack.Screen name='SingleMountainPage' component={SingleMountain} initialParams={{mountain: {}}}/>
-            <Stack.Screen name='UserPage' component={UserMain}/>
-          </Stack.Navigator>
+        <NavigationContainer style={styles.container} ref={navigationRef}>
+          <Header />
+            <Stack.Navigator>
+              <Stack.Screen name="Mountain App" component={MainView}
+                options={{
+                headerShown: true,
+                }} 
+              />
+              <Stack.Screen name='SingleMountainPage' component={SingleMountain} initialParams={{mountain: {}}}/>
+              <Stack.Screen name='UserPage' component={UserMain}/>
+            </Stack.Navigator>
+          <Footer navigationRef={navigationRef}/>
         </NavigationContainer> 
   );
 }

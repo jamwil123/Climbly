@@ -1,40 +1,48 @@
 import { NavigationContainer } from "@react-navigation/native";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { StyleSheet, FlatList, View, SafeAreaView, TouchableHighlight } from "react-native";
 import { getMountains } from "../utils/api";
 import HillCard from "./HillCard.js";
-import Header from "./Header"
+import usePagination from "react-native-flatlist-pagination-hook";
 
 const MainView = ({navigation}) => {
-  const [mountains, setMountain] = useState([]);
+
+  const {
+    data,         //use it in Flatlist data
+    addData,      //push new group of data
+    onEndReached, //callback in Flatlist onEndReached
+    pageIndex,    //current pageIndex use it to query data
+    ListFooterComponent, //use it in Flatlist ListFooterComponent
+  } = usePagination(10);
+
   useEffect(() => {
-    getMountains().then((response) => {
-      setMountain(response);
+    getMountains(pageIndex).then((data) => {
+      addData(data);
     });
-  }, []);
-  console.log(mountains.length);
+  }, [pageIndex]);
+
   return (
-    <View>
-    <Header/>
     <View style={styles.mainview}>
       <FlatList
-        data={mountains}
+        onEndReachedThreshold={.5}
+        onEndReached={onEndReached}
+        data={data}
+        ListFooterComponent={ListFooterComponent}
         renderItem={({ item, index, separators }) => {return (
           <TouchableHighlight onPress={() => {
             navigation.push('SingleMountainPage', {mountain: item}) 
-            
-        }} underlayColor="white">
-          <HillCard
-            key={item.hillnumber}
-            hillObject={item}
-            onShowUnderlay={separators.highlight}
-            onHideUnderlay={separators.unhighlight}
-          ></HillCard>
+           }} underlayColor="white"
+          >
+            <HillCard
+              key={item.hillnumber}
+              hillObject={item}
+              onShowUnderlay={separators.highlight}
+              onHideUnderlay={separators.unhighlight}
+            />
           </TouchableHighlight>
         )}}
         keyExtractor={(item) => item.id}
       />
-    </View>
     </View>
   );
 };
