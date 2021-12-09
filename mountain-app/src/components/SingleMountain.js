@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 14,
         width: screenSize.width * 0.95,
-        height: screenSize.height * 0.25,
+        height: screenSize.height * 0.35,
     },
     textbox_hillname: {
         color: 0xFFFFFFFF,
