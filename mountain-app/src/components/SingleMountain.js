@@ -6,10 +6,10 @@ const screenSize = Dimensions.get('screen')
 
 const SingleMountain = ({route}) => {
     return (
-        <ScrollView>
+        <ScrollView style={styles.mainview}>
             <View style={styles.container}>
                 <View style={styles.title}>
-                    <Text>{route.params.mountain.hillname}</Text>
+                    <Text style={styles.textbox_hillname}>{route.params.mountain.hillname}</Text>
                 </View>
                 <View>
                     <TouchableOpacity disabled={true}>
@@ -32,14 +32,24 @@ const SingleMountain = ({route}) => {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.description}>
-                    <Text>{route.params.mountain.description1}</Text>
-                    <Text>{route.params.mountain.description2}</Text>
+                    <Text style={styles.textbox_description}>{route.params.mountain.description1}</Text>
+                    <Text style={styles.textbox_description}>{route.params.mountain.description2}</Text>
                 </View>
                 <View style={styles.info}>
-                    <Text>Longitude: {route.params.mountain.longitude}</Text>
-                    <Text>Latitude: {route.params.mountain.latitude}</Text>
-                    <Text>Height in feet: {route.params.mountain.feet} </Text>
-                    <Text>Height in metres: {route.params.mountain.metres} metres</Text>
+                    <View style={styles.infoLeft}>
+                        <Text style={styles.textbox_info}>Height in feet: </Text>
+                        <Text style={styles.textbox_info}>Height in metres: </Text>
+                        <Text style={styles.textbox_info}>Longitude:</Text>
+                        <Text style={styles.textbox_info}>Latitude: </Text>
+                    </View>
+                    <View style={styles.infoRight}>
+                        <Text style={styles.textbox_info}>{route.params.mountain.feet} </Text>
+                        <Text style={styles.textbox_info}>{route.params.mountain.metres}</Text>
+                        <Text style={styles.textbox_info}>{route.params.mountain.longitude}</Text>
+                        <Text style={styles.textbox_info}>{route.params.mountain.latitude}</Text>
+                    </View>
+                </View>
+                <View style={styles.classification}>
                     <Text>{route.params.mountain.classification}</Text> 
                 </View>
                 <View style={styles.weather}>
@@ -57,8 +67,20 @@ const SingleMountain = ({route}) => {
 };
 
 const styles = StyleSheet.create({
+    mainview: {
+        backgroundColor: 0x2E2D4DFF,
+    },
     container: {
-        alignItems: 'center'
+        backgroundColor: 0x2B3A67FF,
+        alignItems: "center",
+        marginTop: 10,
+        padding: 15,
+        marginBottom: 3,
+        marginLeft: 6,
+        marginRight: 6,
+        borderRadius: 25,
+        borderColor: 0xAAADC4FF,
+        borderWidth: 1
     },
     image: {
         borderRadius: 14,
@@ -68,15 +90,47 @@ const styles = StyleSheet.create({
     description: {
         width: screenSize.width * 0.9,
     },
-    info: {
-        width: screenSize.width * 0.9,
-    },
     map: {
         borderColor: 0x000000ff,
         borderWidth: 1,
         borderRadius: 14,
         width: screenSize.width * 0.95,
         height: screenSize.height * 0.25,
+    },
+    textbox_hillname: {
+        color: 0xFFFFFFFF,
+        fontSize: 30,
+        fontWeight: 'bold',
+        marginBottom: 10
+    },
+    textbox_description: {
+        textAlign: "left",
+        color: 0xFFFFFFFF,
+        fontSize: 17,
+        marginTop: 10
+    },
+    info: {
+        width: screenSize.width * 0.9,
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginBottom: 10
+    },
+    infoLeft: {
+        flex: 1,
+    },
+    infoRight: {
+        flex: 1,
+        textAlign: "left",
+    },
+    textbox_info: {
+        color: 0xFFFFFFFF,
+        fontSize: 18,
+        marginTop: 10
+    },
+    classification: {
+        marginTop: 20,
+        marginBottom: 20
     }
 })
 

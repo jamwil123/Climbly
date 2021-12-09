@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React, { Children, useEffect, useRef } from "react";
 import { StyleSheet, FlatList, View, TouchableHighlight } from "react-native";
 import { getMountains } from "../utils/api";
 import usePagination from "react-native-flatlist-pagination-hook";
 import HillCard from "./HillCard.js";
 
 const MainView = ({navigation}) => {
+
+  const HillCardRef = useRef()
 
   const {
     data,         //use it in Flatlist data
@@ -29,15 +31,15 @@ const MainView = ({navigation}) => {
         ListFooterComponent={ListFooterComponent}
         renderItem={({ item, index, separators }) => {return (
           <TouchableHighlight onPress={() => {
-            navigation.push('SingleMountainPage', {mountain: item}) 
+            navigation.push('SingleMountainPage', {mountain: item})
            }} underlayColor="white"
           >
-            <HillCard
-              key={item.hillnumber}
-              hillObject={item}
-              onShowUnderlay={separators.highlight}
-              onHideUnderlay={separators.unhighlight}
-            />
+            <View ref={HillCardRef}>
+              <HillCard
+                key={item.hillnumber}
+                hillObject={item}
+              />
+            </View>
           </TouchableHighlight>
         )}}
         keyExtractor={(item) => item.id}
