@@ -20,7 +20,7 @@ export default function App() {
               headerShown: true,
               }} 
             />
-            <Stack.Screen name='SingleMountainPage' component={SingleMountain}/>
+            <Stack.Screen name='SingleMountainPage' component={SingleMountain} initialParams={{mountain: {}}}/>
           </Stack.Navigator>
           <Footer />
         </NavigationContainer> 

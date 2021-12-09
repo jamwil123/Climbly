@@ -17,7 +17,10 @@ const MainView = ({navigation}) => {
       <FlatList
         data={mountains}
         renderItem={({ item, index, separators }) => {return (
-          <TouchableHighlight onPress={() => navigation.push('SingleMountainPage')} underlayColor="white">
+          <TouchableHighlight onPress={() => {
+            navigation.push('SingleMountainPage', {mountain: item}) 
+            
+        }} underlayColor="white">
           <HillCard
             key={item.hillnumber}
             hillObject={item}
