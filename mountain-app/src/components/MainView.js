@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, FlatList, View, SafeAreaView, TouchableHighlight } from "react-native";
 import { getMountains } from "../utils/api";
 import HillCard from "./HillCard.js";
+import Header from "./Header"
 
 const MainView = ({navigation}) => {
   const [mountains, setMountain] = useState([]);
@@ -13,6 +14,8 @@ const MainView = ({navigation}) => {
   }, []);
   console.log(mountains.length);
   return (
+    <View>
+    <Header/>
     <View style={styles.mainview}>
       <FlatList
         data={mountains}
@@ -31,6 +34,7 @@ const MainView = ({navigation}) => {
         )}}
         keyExtractor={(item) => item.id}
       />
+    </View>
     </View>
   );
 };

@@ -1,5 +1,5 @@
-import * as React from "react";
-import { StyleSheet, View, Text, Button } from "react-native";
+import React, {useRef} from "react";
+import { StyleSheet, View, Text, Button} from "react-native";
 import Header from "./src/components/Header";
 import MainView from "./src/components/MainView";
 import Footer from "./src/components/Footer";
@@ -11,12 +11,11 @@ import UserMain from "./src/components/UserMain"
 const Stack = createNativeStackNavigator(); 
 
 export default function App() {
-  
+  const mainViewRef = useRef()
   return (
         <NavigationContainer style={styles.container}>
-          <Header/>
           <Stack.Navigator>
-            <Stack.Screen name="Mountain App" component={MainView} 
+            <Stack.Screen name="Mountain App" ref={mainViewRef} component={MainView} 
               options={{
               headerShown: true,
               }} 
@@ -24,7 +23,6 @@ export default function App() {
             <Stack.Screen name='SingleMountainPage' component={SingleMountain} initialParams={{mountain: {}}}/>
             <Stack.Screen name='UserPage' component={UserMain}/>
           </Stack.Navigator>
-          <Footer />
         </NavigationContainer> 
   );
 }

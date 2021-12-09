@@ -4698,6 +4698,11 @@
     "prop-types" "^15.7.2"
     "yargs" "^16.1.1"
 
+"react-native-weather@^0.2.11":
+  "integrity" "sha512-YWkCQVx8M1fW2pBPh/RtNAdBCGkdtL2+uDKnjJvmBCxvjhQl9F7zkQkzxbGUFe6R+rI6bqn4vQir4D+q74rDqQ=="
+  "resolved" "https://registry.npmjs.org/react-native-weather/-/react-native-weather-0.2.11.tgz"
+  "version" "0.2.11"
+
 "react-native-web@>= 0.11", "react-native-web@0.17.1":
   "integrity" "sha512-lUnn+2O8ynQ6/gJKylSxm7DLi2vHw6AujdDV1+LSa8Epe1bYFJNUcJTEhJf0jNYUFGOujzMtuG8Mkz3HdWTkag=="
   "resolved" "https://registry.npmjs.org/react-native-web/-/react-native-web-0.17.1.tgz"

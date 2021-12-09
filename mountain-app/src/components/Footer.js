@@ -1,10 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button} from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
 
-const Footer = () => {
+const Footer = (navigation) => {
     return (
         <View style={styles.footer}>
             <Text>Footer</Text>
+            <Button title="User" onPress={() => {
+                navigation.push('UserMain')
+                
+            }}/>
         </View>
     );
 };
