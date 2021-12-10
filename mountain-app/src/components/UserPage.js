@@ -31,7 +31,7 @@ const UserPage = () => {
                 }} mapType={'satellite'} 
                 /> 
             </View>
-            <Button title="Log Out" onPress={()=>{setCurrentUser('')}}/>
+            <Button title="Log Out" onPress={()=>{setCurrentUser({})}}/>
         </ScrollView>
     );
 };
