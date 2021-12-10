@@ -10,23 +10,18 @@ let lastHillId = null;
 const MainView = ({navigation}) => {
 const {currentUser} = useContext(userContext)
   const HillCardRef = useRef()
-  // console.log(currentUser)
-
 
   const {
-    data,         //use it in Flatlist data
-    addData,      //push new group of data
-    onEndReached, //callback in Flatlist onEndReached
-    pageIndex,    //current pageIndex use it to query data
-    ListFooterComponent, //use it in Flatlist ListFooterComponent
+    data,         
+    addData,      
+    onEndReached, 
+    pageIndex,    
+    ListFooterComponent, 
   } = usePagination(10);
 
   useEffect(() => {
     getMountains(lastHillId).then((data) => {
-      // console.log('request for next', data.length)
-      // console.log(data[9].id)
       lastHillId = data[9].id
-      // console.log(lastHillId)
       addData(data);
     });
   }, [pageIndex]);
