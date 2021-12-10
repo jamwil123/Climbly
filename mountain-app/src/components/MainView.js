@@ -5,10 +5,13 @@ import usePagination from "react-native-flatlist-pagination-hook";
 import HillCard from "./HillCard.js";
 import { userContext } from "../contexts/userContext";
 
+let lastHillId = null;
+
 const MainView = ({navigation}) => {
 const {currentUser} = useContext(userContext)
   const HillCardRef = useRef()
-  console.log(currentUser)
+  // console.log(currentUser)
+
 
   const {
     data,         //use it in Flatlist data
@@ -19,7 +22,11 @@ const {currentUser} = useContext(userContext)
   } = usePagination(10);
 
   useEffect(() => {
-    getMountains(pageIndex).then((data) => {
+    getMountains(lastHillId).then((data) => {
+      // console.log('request for next', data.length)
+      // console.log(data[9].id)
+      lastHillId = data[9].id
+      // console.log(lastHillId)
       addData(data);
     });
   }, [pageIndex]);
@@ -44,7 +51,9 @@ const {currentUser} = useContext(userContext)
             </View>
           </TouchableHighlight>
         )}}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => {
+          item.hillnumber
+        }}
       />
     </View>
   );
