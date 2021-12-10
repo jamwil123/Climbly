@@ -27,8 +27,8 @@ const LoginScreen = () => {
       .then((uid) => {
         const newUser = {
           name: name,
-          img_url:
-            "https://i.guim.co.uk/img/media/4ba81b5cf986f78f1736dbd69db9e972d68f4ec3/0_57_2736_1642/master/2736.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=180e7cc8a3a258c8af668bc7704c3f3b",
+          img_url: avatar_url
+            
         };
         postUser(uid, newUser).then((userObj) => {
           setCurrentUser(userObj);
