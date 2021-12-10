@@ -15,3 +15,9 @@ export const postUser = (uid) => {
     return res.data.user;
   });
 };
+
+export const getUser = (uid) => {
+  return db.get(`/users/${uid}`).then((res) => {
+    return res.data.user;
+  });
+};
