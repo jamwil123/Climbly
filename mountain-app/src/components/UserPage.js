@@ -24,10 +24,10 @@ const UserPage = () => {
                     <Text style={styles.userInfoText}>Total feet climbed: {currentUser.totalFeetClimbed}</Text>
                 </View>
                 <MapView style={styles.map} initialRegion={{
-                    latitude: 54.7297774,
-                    longitude: -4.6761387,
-                    latitudeDelta: 9,
-                    longitudeDelta: 9,
+                    latitude: 54.7225864,
+                    longitude: -4.3537658,
+                    latitudeDelta: 9.5,
+                    longitudeDelta: 9.5,
                 }} mapType={'satellite'} 
                 /> 
             </View>

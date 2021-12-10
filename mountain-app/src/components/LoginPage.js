@@ -52,7 +52,7 @@ const LoginScreen = () => {
       })
       .catch((error) => alert(error.message));
   };
-  console.log(register);
+
   return register === false ? (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
       <View style={styles.inputContainer}>
