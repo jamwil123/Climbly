@@ -5,9 +5,9 @@ const db = axios.create({
 });
 
 export const getMountains = (lastHillId) => {
-  let query = ""
+  let query = "";
   if (lastHillId !== null) {
-    query += `?lastVisibleHill=${lastHillId}`
+    query += `?lastVisibleHill=${lastHillId}`;
   }
 
   return db.get(`/mountains${query}`).then((res) => {
@@ -15,8 +15,8 @@ export const getMountains = (lastHillId) => {
   });
 };
 
-export const postUser = (uid) => {
-  return db.post(`/users/${uid}`).then((res) => {
+export const postUser = (uid, newUser) => {
+  return db.post(`/users/${uid}`, newUser).then((res) => {
     return res.data.user;
   });
 };

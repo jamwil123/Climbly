@@ -9,7 +9,10 @@ import { getUser, postUser } from "../utils/api";
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [avatar_url, setAvatar_url] = useState("");
   const { currentUser, setCurrentUser } = useContext(userContext);
+  const [register, setRegister] = useState(false);
 
   const navigation = useNavigation();
 
@@ -22,7 +25,12 @@ const LoginScreen = () => {
         return userCredentials.user.uid;
       })
       .then((uid) => {
-        postUser(uid).then((userObj) => {
+        const newUser = {
+          name: name,
+          img_url:
+            "https://i.guim.co.uk/img/media/4ba81b5cf986f78f1736dbd69db9e972d68f4ec3/0_57_2736_1642/master/2736.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=180e7cc8a3a258c8af668bc7704c3f3b",
+        };
+        postUser(uid, newUser).then((userObj) => {
           setCurrentUser(userObj);
         });
       })
@@ -44,8 +52,8 @@ const LoginScreen = () => {
       })
       .catch((error) => alert(error.message));
   };
-
-  return (
+  console.log(register);
+  return register === false ? (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
       <View style={styles.inputContainer}>
         <TextInput
@@ -68,8 +76,46 @@ const LoginScreen = () => {
         <TouchableOpacity onPress={handleLogin} style={styles.button}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          onPress={(event) => {
+            event.preventDefault();
+            setRegister(true);
+          }}
+          style={[styles.button, styles.buttonOutline]}
+        >
+          <Text style={styles.buttonOutlineText}>Not got an account?</Text>
+        </TouchableOpacity>
+      </View>
+    </KeyboardAvoidingView>
+  ) : (
+    <KeyboardAvoidingView style={styles.container} behavior="padding">
+      <View style={styles.inputContainer}>
+        <TextInput
+          placeholder="Email"
+          value={email}
+          onChangeText={(text) => setEmail(text)}
+          style={styles.input}
+          key={currentUser.userToken}
+        />
+        <TextInput
+          placeholder="Password"
+          value={password}
+          onChangeText={(text) => setPassword(text)}
+          style={styles.input}
+          secureTextEntry
+        />
+        <TextInput placeholder="Name" value={name} onChangeText={(text) => setName(text)} style={styles.input} />
+        <TextInput
+          placeholder="Avatar URL"
+          value={avatar_url}
+          onChangeText={(text) => setAvatar_url(text)}
+          style={styles.input}
+        />
+      </View>
+
+      <View style={styles.buttonContainer}>
         <TouchableOpacity onPress={handleSignUp} style={[styles.button, styles.buttonOutline]}>
-          <Text style={styles.buttonOutlineText}>Register</Text>
+          <Text style={styles.buttonOutlineText}>Sign up</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
