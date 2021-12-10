@@ -1,12 +1,14 @@
-import React, { Children, useEffect, useRef } from "react";
+import React, { Children, useContext, useEffect, useRef } from "react";
 import { StyleSheet, FlatList, View, TouchableHighlight } from "react-native";
 import { getMountains } from "../utils/api";
 import usePagination from "react-native-flatlist-pagination-hook";
 import HillCard from "./HillCard.js";
+import { userContext } from "../contexts/userContext";
 
 const MainView = ({navigation}) => {
-
+const {currentUser} = useContext(userContext)
   const HillCardRef = useRef()
+  console.log(currentUser)
 
   const {
     data,         //use it in Flatlist data

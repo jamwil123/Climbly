@@ -9,3 +9,9 @@ export const getMountains = () => {
     return res.data.mountains;
   });
 };
+
+export const postUser = (uid) => {
+  return db.post(`/users/${uid}`).then((res) => {
+    return res.data.user;
+  });
+};
