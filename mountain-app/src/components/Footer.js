@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button} from 'react-native';
+import { StyleSheet, Text, View, Button, TouchableOpacity, Image} from 'react-native';
 
 const Footer = ({navigationRef}) => {
     return (
@@ -8,6 +8,8 @@ const Footer = ({navigationRef}) => {
             <Button title="User" onPress={() => {
                 navigationRef.current.navigate("UserPage")
             }}/>
+            <TouchableOpacity activeOpacity={0.5}>
+</TouchableOpacity>
         </View>
     );
 };

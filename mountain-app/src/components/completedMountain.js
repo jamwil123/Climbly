@@ -38,12 +38,19 @@ export default function CompletedMountain({ mountainObj }) {
   }
   function removed() {
     setCurrentUser((pre) => {
-      pre.hillsClimbed = pre.hillsClimbed.filter((mountain) => {
-        !mountain.hillnumber === mountainObj.hillnumber;
-      });
-      pre.noOfHillsClimbed -= 1;
-      pre.totalFeetClimbed -= mountainObj.feet;
-      return currentUser;
+      const mountainArr = pre.hillsClimbed.filter(
+        (mountain) => mountain.hillnumber !== mountainObj.hillnumber
+      );
+      const previousValue = {
+        hillsClimbed: [...mountainArr],
+        name: pre.name,
+        noOfHillsClimbed: (pre.noOfHillsClimbed -= 1),
+        totalFeetClimbed: (pre.totalFeetClimbed -=
+          mountainObj.feet),
+        userToken: pre.userToken,
+        img_url: pre.img_url
+      };
+      return previousValue;
     });
     setChecked(!checked);
   }
