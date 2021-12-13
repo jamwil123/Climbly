@@ -36,7 +36,7 @@ const jsonToFirestore = async () => {
     await firestoreService.initializeApp(serviceAccount, firebaseConfig.databaseURL);
     console.log('Firebase Initialized');
 
-    await firestoreService.restore('./data/testData.json');
+    await firestoreService.restore('./data/hillsFinalDB.json'); // the json file should look like {'collection name: [array of documents to add]}
     console.log('Upload Success');
   }
   catch (error) {
