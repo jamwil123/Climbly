@@ -41,7 +41,7 @@ export default function App() {
         </Stack.Navigator>
         <Footer navigationRef={navigationRef} />
         <View>
-          <Modal animationType="slide" transparent={true} visible={modalVisible} >
+          <Modal animationType="slide" transparent={true} visible={modalVisible} hasBackdrop={true} backdropColor={'black'} backdropOpacity={0.7} onBackdropPress={()=>{setModalVisible(false)}}>
             <View style={styles.modalView}>
               <Text>Sort mountains by:</Text>
               <Button title="x" onPress={()=>{setModalVisible(false)}}></Button>
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 4,
-    elevation: 5,
+    elevation: 5
   },
   outterView: {
     flex: 1,
