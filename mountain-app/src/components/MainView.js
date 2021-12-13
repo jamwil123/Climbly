@@ -7,21 +7,16 @@ import { userContext } from "../contexts/userContext";
 
 let lastHillId = null;
 
-const MainView = ({navigation}) => {
-const {currentUser} = useContext(userContext)
-  const HillCardRef = useRef()
+const MainView = ({ navigation }) => {
+  const { currentUser } = useContext(userContext);
+  const HillCardRef = useRef();
 
-  const {
-    data,         
-    addData,      
-    onEndReached, 
-    pageIndex,    
-    ListFooterComponent, 
-  } = usePagination(10);
+  const { data, addData, onEndReached, pageIndex, ListFooterComponent } =
+    usePagination(10);
 
   useEffect(() => {
     getMountains(lastHillId).then((data) => {
-      lastHillId = data[9].id
+      lastHillId = data[9].id;
       addData(data);
     });
   }, [pageIndex]);
@@ -29,25 +24,26 @@ const {currentUser} = useContext(userContext)
   return (
     <View style={styles.mainview}>
       <FlatList
-        onEndReachedThreshold={.5}
+        onEndReachedThreshold={0.5}
         onEndReached={onEndReached}
         data={data}
         ListFooterComponent={ListFooterComponent}
-        renderItem={({ item, index, separators }) => {return (
-          <TouchableHighlight onPress={() => {
-            navigation.push('SingleMountainPage', {mountain: item})
-           }} underlayColor="white"
-          >
-            <View ref={HillCardRef}>
-              <HillCard
-                key={item.hillnumber}
-                hillObject={item}
-              />
-            </View>
-          </TouchableHighlight>
-        )}}
+        renderItem={({ item, index, separators }) => {
+          return (
+            <TouchableHighlight
+              onPress={() => {
+                navigation.push("SingleMountainPage", { mountain: item });
+              }}
+              underlayColor="white"
+            >
+              <View ref={HillCardRef}>
+                <HillCard key={item.hillnumber} hillObject={item} />
+              </View>
+            </TouchableHighlight>
+          );
+        }}
         keyExtractor={(item) => {
-          item.hillnumber
+          item.hillnumber;
         }}
       />
     </View>
@@ -56,12 +52,12 @@ const {currentUser} = useContext(userContext)
 
 const styles = StyleSheet.create({
   mainview: {
-    backgroundColor: 0x2E2D4DFF,
+    backgroundColor: 0x2e2d4dff,
     alignItems: "stretch",
     justifyContent: "center",
     width: "100%",
     height: "100%",
-    padding: 0
+    padding: 0,
   },
 });
 

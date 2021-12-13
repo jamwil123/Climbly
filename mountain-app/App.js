@@ -28,7 +28,11 @@ export default function App() {
               headerShown: true,
             }}
           />
-          <Stack.Screen name="SingleMountainPage" component={SingleMountain} initialParams={{ mountain: {} }} />
+          <Stack.Screen
+            name="SingleMountainPage"
+            component={SingleMountain}
+            initialParams={{ mountain: {} }}
+          />
           <Stack.Screen name="UserPage" component={UserMain} />
         </Stack.Navigator>
         <Footer navigationRef={navigationRef} />
