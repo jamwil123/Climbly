@@ -19,7 +19,6 @@ export default function App() {
   return (
     <userContext.Provider value={{ currentUser, setCurrentUser }}>
       <NavigationContainer style={styles.container} ref={navigationRef}>
-        <Header />
         <Stack.Navigator>
           <Stack.Screen
             name="Mountain App"
