@@ -6,53 +6,45 @@ import HillCard from "./HillCard.js";
 import { userContext } from "../contexts/userContext";
 
 let lastHillId = null;
-let lastSortValue;
-let lastOrderValue;
+let lastSortValue = 'hillname';
+let lastOrderValue = 'ASC';
+
+const isSortChanged = (value) => {
+  if (value !== lastSortValue) {
+    lastSortValue = value;
+    return true;
+  } else {
+    return false;
+  }
+};
+
+const isOrderChanged = (value) => {
+  if (value !== lastOrderValue) {
+    lastOrderValue = value;
+    return true;
+  } else {
+    return false;
+  }
+};
 
 const MainView = ({ navigation, sortQuery }) => {
   const { currentUser } = useContext(userContext);
   const HillCardRef = useRef();
-  const [render, setRender] = useState(false);
 
   const { sort, order } = sortQuery;
   const { data, addData, resetData, onEndReached, pageIndex, ListFooterComponent } = usePagination(10);
 
-  const isSortChanged = (value) => {
-    if (value !== lastSortValue) {
-      lastSortValue = value;
-      return true;
-    } else {
-      return false;
-    }
-  };
-  const isOrderChanged = (value) => {
-    if (value !== lastOrderValue) {
-      lastOrderValue = value;
-      return true;
-    } else {
-      return false;
-    }
-  };
-
   if (isOrderChanged(order) || isSortChanged(sort)) {
     lastHillId = null;
-    if (render) {
-      setRender(false);
-      resetData([]);
-    }
-    if (!render) {
-      setRender(true);
-      resetData([]);
-    }
+    resetData([]);
   }
 
   useEffect(() => {
     getMountains(lastHillId, sort, order).then((mountains) => {
-      console.log(mountains[0].hillname);
       lastHillId = mountains[9].id;
       addData(mountains);
     });
-  }, [pageIndex]);
+  }, [pageIndex, sort, order]);
 
   return (
     <View style={styles.mainview}>

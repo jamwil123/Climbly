@@ -18,7 +18,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [modalVisible, setModalVisible] = useState(false);
-  const [sortQuery, setSortQuery] = useState({ sort: null, order: null });
+  const [sortQuery, setSortQuery] = useState({ sort: 'hillname', order: 'ASC' });
 
   const navigationRef = useRef();
 
@@ -53,12 +53,6 @@ export default function App() {
             animationType="slide"
             transparent={true}
             visible={modalVisible}
-            hasBackdrop={false}
-            backdropColor={"black"}
-            backdropOpacity={0.7}
-            onBackdropPress={() => {
-              setModalVisible(false);
-            }}
           >
             <View style={styles.modalView}>
               <Text>Sort mountains by:</Text>
@@ -72,24 +66,28 @@ export default function App() {
                 title="Name a-z"
                 onPress={() => {
                   setSortQuery({ sort: "hillname", order: "ASC" });
+                  setModalVisible(false);
                 }}
               ></Button>
               <Button
                 title="Name z-a"
                 onPress={() => {
                   setSortQuery({ sort: "hillname", order: "DESC" });
+                  setModalVisible(false);
                 }}
               ></Button>
               <Button
                 title="Feet hight to low"
                 onPress={() => {
                   setSortQuery({ sort: "feet", order: "DESC" });
+                  setModalVisible(false);
                 }}
               ></Button>
               <Button
                 title="Feet low to hight"
                 onPress={() => {
                   setSortQuery({ sort: "feet", order: "ASC" });
+                  setModalVisible(false);
                 }}
               ></Button>
             </View>
