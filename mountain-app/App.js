@@ -19,7 +19,6 @@ export default function App() {
   return (
     <userContext.Provider value={{ currentUser, setCurrentUser }}>
       <NavigationContainer style={styles.container} ref={navigationRef}>
-        <Header />
         <Stack.Navigator>
           <Stack.Screen
             name="Mountain App"
@@ -28,7 +27,11 @@ export default function App() {
               headerShown: true,
             }}
           />
-          <Stack.Screen name="SingleMountainPage" component={SingleMountain} initialParams={{ mountain: {} }} />
+          <Stack.Screen
+            name="SingleMountainPage"
+            component={SingleMountain}
+            initialParams={{ mountain: {} }}
+          />
           <Stack.Screen name="UserPage" component={UserMain} />
         </Stack.Navigator>
         <Footer navigationRef={navigationRef} />
