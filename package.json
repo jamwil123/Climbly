@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "dotenv": "^10.0.0",
+    "firestore-export-import": "^0.17.0",
     "react-native-maps": "^0.29.4"
   }
 }

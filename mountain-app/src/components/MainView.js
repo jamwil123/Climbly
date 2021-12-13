@@ -1,5 +1,5 @@
-import React, { Children, useContext, useEffect, useRef } from "react";
-import { StyleSheet, FlatList, View, TouchableHighlight } from "react-native";
+import React, { Children, useContext, useEffect, useRef, useState } from "react";
+import { StyleSheet, FlatList, View, TouchableHighlight, Modal } from "react-native";
 import { getMountains } from "../utils/api";
 import usePagination from "react-native-flatlist-pagination-hook";
 import HillCard from "./HillCard.js";
@@ -8,7 +8,7 @@ import { userContext } from "../contexts/userContext";
 let lastHillId = null;
 
 const MainView = ({navigation}) => {
-const {currentUser} = useContext(userContext)
+  const {currentUser} = useContext(userContext)
   const HillCardRef = useRef()
 
   const {
@@ -50,6 +50,7 @@ const {currentUser} = useContext(userContext)
           item.hillnumber
         }}
       />
+      
     </View>
   );
 };
