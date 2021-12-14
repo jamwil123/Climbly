@@ -21,6 +21,11 @@ export const postUser = (uid, newUser) => {
   });
 };
 
+export const updateUser = (body, user) => {
+  return db.patch(`/users/${user.userToken}`, body).then((res) => {
+    return res.data.user;
+  });
+};
 export const getUser = (uid) => {
   return db.get(`/users/${uid}`).then((res) => {
     return res.data.user;
