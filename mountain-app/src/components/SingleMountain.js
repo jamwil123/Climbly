@@ -10,10 +10,13 @@ import {
 } from "react-native";
 import MapView from "react-native-maps";
 import CompletedMountain from "./completedMountain";
+import ClassBadge from '../components/ClassBadge'
 
 const screenSize = Dimensions.get("screen");
 
 const SingleMountain = ({ route }) => {
+  
+
   return (
     <ScrollView style={styles.mainview}>
       <View style={styles.container}>
@@ -79,7 +82,7 @@ const SingleMountain = ({ route }) => {
           </View>
         </View>
         <View style={styles.classification}>
-          <Text>{route.params.mountain.classification}</Text>
+          <ClassBadge classificationObj={route.params.mountain.classification}/>
         </View>
         <View style={styles.weather}></View>
         <View style={styles.img}>

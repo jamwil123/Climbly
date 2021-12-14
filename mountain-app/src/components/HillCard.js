@@ -7,6 +7,18 @@ const HillCard = (props) => {
   let hillname = props.hillObject.hillname
   hillname.includes('[') ? hillname = hillname.slice(0, hillname.indexOf('[')) : hillname
 
+  let difficultyRating
+
+  if (props.hillObject.feet <= 1000) { 
+      difficultyRating = '⛰'
+  } else if (props.hillObject.feet > 1000 && props.hillObject.feet <2500) {
+      difficultyRating = '⛰⛰⛰'
+  }
+  else {
+    difficultyRating = '⛰⛰⛰⛰⛰'
+}
+
+
   return (
     <View style={styles.hillcard}>
       <View>
@@ -17,6 +29,7 @@ const HillCard = (props) => {
       </View>
       <View style={styles.textbox}>
         <Text style={styles.textbox_hillname}>{hillname}</Text>
+        <Text>{difficultyRating}</Text>
         <Text style={styles.textbox_hillheight}>{props.hillObject.feet} feet</Text>   
       </View>
     </View>
@@ -24,6 +37,10 @@ const HillCard = (props) => {
 };
 
 const styles = StyleSheet.create({
+  difficulty: {
+  
+    
+  },
   hillcard: {
     backgroundColor: 0x2B3A67FF,
     alignItems: "center",
