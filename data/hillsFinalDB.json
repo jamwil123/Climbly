@@ -1,4 +1,4 @@
-[
+{ "mountains": [
     {
         "0": 0,
         "1": 0,
@@ -60697,3 +60697,4 @@
         "img_hres_url": "https://upload.wikimedia.org/wikipedia/commons/4/47/Ysgafell_Wen_-_geograph.org.uk_-_6607.jpg"
     }
 ]
+}
