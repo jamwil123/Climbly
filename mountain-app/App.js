@@ -19,6 +19,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [modalVisible, setModalVisible] = useState(false);
+  const [searchBarVisible, setSearchBarVisible] = useState(false);
   const [sortQuery, setSortQuery] = useState({ sort: 'hillname', order: 'ASC' });
 
   const navigationRef = useRef();
@@ -42,6 +43,18 @@ export default function App() {
                 >
                   <Text style={styles.sortButtonText}>
                     Sort ->
+                  </Text>
+                </Pressable>
+              ),
+              headerRight: () => (
+                <Pressable
+                  style={styles.searchButton}
+                  onPress={() => {
+                    setSearchBarVisible(true);
+                  }}
+                >
+                  <Text style={styles.sortButtonText}>
+                    search
                   </Text>
                 </Pressable>
               ),
@@ -123,6 +136,13 @@ export default function App() {
               </TouchableHighlight>
             </View>
           </Modal>
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={searchBarVisible}
+          >
+            <View style={styles.searchModalView}></View>
+          </Modal>
         </View>
       </NavigationContainer>
     </userContext.Provider>
@@ -193,5 +213,31 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto',
     fontSize: 22
+  },
+  searchButton: {
+    borderColor: 0x2e2d4dff,
+    backgroundColor: 0xDDDDF0FF,
+    borderWidth: 1,
+    borderRadius: 15,
+    paddingLeft: 12,
+    paddingRight: 12,
+    paddingTop: 5,
+    paddingBottom: 5
+  },
+  searchModalView: {
+    marginTop: 0,
+    marginBottom: 'auto',
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
   }
 });
