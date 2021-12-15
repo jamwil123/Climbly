@@ -6,72 +6,74 @@ const screenSize = Dimensions.get("screen");
 const ModalSort = ({modalVisible, setModalVisible, setSortQuery}) => {
     return (
         <Modal
-            animationType="slide"
+            animationType="fade"
             transparent={true}
             visible={modalVisible}
         >
-            <View style={styles.modalView}>
-              <Text style={styles.modalText}>Sort mountains by:</Text>
-              <TouchableHighlight
-                  underlayColor={0x6F6DABff}
-                  onPressOut={() => {
-                    setSortQuery({ sort: "hillname", order: "ASC" });
-                    setModalVisible(false);
-                  }}
-                  style={styles.modalButton}
-              >
-                    <Text style={styles.modalButtonText}>
-                    Name a-z
-                    </Text>
-              </TouchableHighlight>
-              <TouchableHighlight
-                  underlayColor={0x6F6DABff}
-                  onPressIn={(e) => {console.log(e.target)}}
-                  onPress={() => {
-                    setSortQuery({ sort: "hillname", order: "DESC" });
-                    setModalVisible(false);
-                  }}
-                  style={styles.modalButton}
-              >
-                    <Text style={styles.modalButtonText}>
-                    Name z-a
-                    </Text>
-              </TouchableHighlight>
-              <TouchableHighlight
-                  underlayColor={0x6F6DABff}
-                  onPress={() => {
-                    setSortQuery({ sort: "feet", order: "DESC" });
-                    setModalVisible(false);
-                  }}
-                  style={styles.modalButton}
-              >
-                    <Text style={styles.modalButtonText}>
-                    Feet hight to low
-                    </Text>
-              </TouchableHighlight>
-              <TouchableHighlight
-                  underlayColor={0x6F6DABff}
-                  onPress={() => {
-                    setSortQuery({ sort: "feet", order: "ASC" });
-                    setModalVisible(false);
-                  }}
-                  style={styles.modalButton}
-              >
-                    <Text style={styles.modalButtonText}>
-                    Feet low to hight
-                    </Text>
-              </TouchableHighlight>
-              <TouchableHighlight
-                  underlayColor='0x2e2d4dff'
-                  onPress={() => {
-                    setModalVisible(false);
-                  }}
-                  style={styles.modalExitButton}
-              >
-                    <Text style={styles.modalButtonText}>
-                    Close
-                    </Text>
-              </TouchableHighlight>
+            <View style={styles.modalBackground}>
+                <View style={styles.modalView}>
+                <Text style={styles.modalText}>Sort mountains by:</Text>
+                <TouchableHighlight
+                    underlayColor={0x6F6DABff}
+                    onPressOut={() => {
+                        setSortQuery({ sort: "hillname", order: "ASC" });
+                        setModalVisible(false);
+                    }}
+                    style={styles.modalButton}
+                >
+                        <Text style={styles.modalButtonText}>
+                        Name a-z
+                        </Text>
+                </TouchableHighlight>
+                <TouchableHighlight
+                    underlayColor={0x6F6DABff}
+                    onPressIn={(e) => {console.log(e.target)}}
+                    onPress={() => {
+                        setSortQuery({ sort: "hillname", order: "DESC" });
+                        setModalVisible(false);
+                    }}
+                    style={styles.modalButton}
+                >
+                        <Text style={styles.modalButtonText}>
+                        Name z-a
+                        </Text>
+                </TouchableHighlight>
+                <TouchableHighlight
+                    underlayColor={0x6F6DABff}
+                    onPress={() => {
+                        setSortQuery({ sort: "feet", order: "DESC" });
+                        setModalVisible(false);
+                    }}
+                    style={styles.modalButton}
+                >
+                        <Text style={styles.modalButtonText}>
+                        Feet hight to low
+                        </Text>
+                </TouchableHighlight>
+                <TouchableHighlight
+                    underlayColor={0x6F6DABff}
+                    onPress={() => {
+                        setSortQuery({ sort: "feet", order: "ASC" });
+                        setModalVisible(false);
+                    }}
+                    style={styles.modalButton}
+                >
+                        <Text style={styles.modalButtonText}>
+                        Feet low to hight
+                        </Text>
+                </TouchableHighlight>
+                <TouchableHighlight
+                    underlayColor='0x2e2d4dff'
+                    onPress={() => {
+                        setModalVisible(false);
+                    }}
+                    style={styles.modalExitButton}
+                >
+                        <Text style={styles.modalButtonText}>
+                        Close
+                        </Text>
+                </TouchableHighlight>
+                </View>
             </View>
         </Modal>
     );
@@ -118,6 +120,11 @@ const styles = StyleSheet.create({
       shadowRadius: 4,
       elevation: 5,
     },
+    modalBackground: {
+        width: screenSize.width,
+        height: screenSize.height,
+        backgroundColor: 0x000000bb
+    },
     modalText: {
       fontSize: 30,
       marginBottom: 18
@@ -135,12 +142,12 @@ const styles = StyleSheet.create({
       borderWidth: 1,
       borderRadius: 20,
       marginBottom: 12,
-      padding: 6,
+      padding: 8,
     },
     modalButtonText: {
       marginLeft: 'auto',
       marginRight: 'auto',
-      fontSize: 22
+      fontSize: 17
     },
     searchButton: {
       borderColor: 0x2e2d4dff,

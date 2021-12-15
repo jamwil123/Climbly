@@ -15,130 +15,120 @@ const ModalSearch = ({searchBarVisible, setSearchBarVisible, setSearchQueryObj})
             transparent={true}
             visible={searchBarVisible}
           >
-            <SafeAreaView style={styles.searchModalView}>
-                <View style={styles.searchByNameSection}>
-                    <Text style={styles.searchTitle}>Search mountain by name:</Text>
-                    <TextInput
-                        placeholder="Hill name: "
-                        value={hillname}
-                        onChangeText={(text) => setHillname(text)}
-                        style={styles.searchNameInputBox}
-                    />
-                    <TouchableHighlight onPress={() => {
-                        setSearchQueryObj({
-                            name: hillname,
-                            lowestHeight: null,
-                            highestHeight: null,
-                            country: null
-                            })
-                        setSearchBarVisible(false)
-                    }} style={styles.searchButton}>
-                        <Text style={styles.searchButtonText}>Search</Text>
-                    </TouchableHighlight>
-                </View>
-                        <View style={styles.searchByCountrySection}>
-                            <Text style={styles.searchTitle}>Search mountain by country:</Text>
-                            <TouchableHighlight onPress={() => {
-                                setSearchQueryObj({
-                                    name: null,
-                                    lowestHeight: null,
-                                    highestHeight: null,
-                                    country: 'S'
-                                    })
-                                setSearchBarVisible(false)
-                                }} style={styles.searchButton}>
-                                <Text style={styles.searchButtonText}>Show mountians of Scotland</Text>
-                            </TouchableHighlight>
-                            <TouchableHighlight onPress={() => {
-                                setSearchQueryObj({
-                                    name: null,
-                                    lowestHeight: null,
-                                    highestHeight: null,
-                                    country: 'E'
-                                    })
-                                setSearchBarVisible(false)
-                                }} style={styles.searchButton}>
-                                <Text style={styles.searchButtonText}>Show mountains of England</Text>
-                            </TouchableHighlight>
-                            <TouchableHighlight onPress={() => {
-                                setSearchQueryObj({
-                                    name: null,
-                                    lowestHeight: null,
-                                    highestHeight: null,
-                                    country: 'W'
-                                    })
-                                setSearchBarVisible(false)
-                                }} 
-                                style={styles.searchButton}>
-                                <Text style={styles.searchButtonText}>Show mountains of Wales</Text>
-                            </TouchableHighlight>
-                            
-                        </View>
-                    <Text style={styles.searchTitle}>Search mountain by hight range:</Text>
-                    <RangeSlider min={1640} max={4411}
-                                fromValueOnChange={value => setLowestHeight(value)}
-                                toValueOnChange={value => setHighestHeight(value)}
-                                initialFromValue={1640}
-                                styleSize='small'
-                            />
-                <View style={styles.searchByRangeSection}>
-                    <TouchableHighlight onPress={() => {
-                        setSearchQueryObj({
-                            name: null,
-                            lowestHeight: lowestHeight,
-                            highestHeight: highestHeight,
-                            country: null
-                            })
-                        setSearchBarVisible(false)
+            <View style={styles.modalBackground}>
+                <SafeAreaView style={styles.searchModalView}>
+                    <View style={styles.searchByNameSection}>
+                        <Text style={[styles.searchTitle, styles.marginBottom]}>Search mountain by name:</Text>
+                        <TextInput
+                            placeholder="Hill name: "
+                            value={hillname}
+                            onChangeText={(text) => setHillname(text)}
+                            style={styles.searchNameInputBox}
+                        />
+                        <TouchableHighlight onPress={() => {
+                            setSearchQueryObj({
+                                name: hillname,
+                                lowestHeight: null,
+                                highestHeight: null,
+                                country: null
+                                })
+                            setSearchBarVisible(false)
                         }} style={styles.searchButton}>
-                        <Text style={styles.searchButtonText}>Show mountains from: {lowestHeight} feet, to {highestHeight} feet.</Text>
-                    </TouchableHighlight>
-                </View>
-                <View style={styles.searchSectionOther}>
-                    <TouchableHighlight
-                        underlayColor='0x2e2d4dff'
-                        onPress={() => {
-                            setSearchQueryObj({});
-                        }}
-                        style={styles.searchButton}
-                    >
-                            <Text style={styles.searchButtonText}>
-                            Show all mountains in the UK
-                            </Text>
-                    </TouchableHighlight>
+                            <Text style={styles.searchButtonText}>Search</Text>
+                        </TouchableHighlight>
+                    </View>
+                    <View style={styles.searchByCountrySection}>
+                        <Text style={[styles.searchTitle, styles.marginBottom]}>Search mountain by country:</Text>
+                        <TouchableHighlight onPress={() => {
+                            setSearchQueryObj({
+                                name: null,
+                                lowestHeight: null,
+                                highestHeight: null,
+                                country: 'S'
+                                })
+                            setSearchBarVisible(false)
+                            }} style={styles.searchButton}>
+                            <Text style={styles.searchButtonText}>Show mountians of Scotland</Text>
+                        </TouchableHighlight>
+                        <TouchableHighlight onPress={() => {
+                            setSearchQueryObj({
+                                name: null,
+                                lowestHeight: null,
+                                highestHeight: null,
+                                country: 'E'
+                                })
+                            setSearchBarVisible(false)
+                            }} style={styles.searchButton}>
+                            <Text style={styles.searchButtonText}>Show mountains of England</Text>
+                        </TouchableHighlight>
+                        <TouchableHighlight onPress={() => {
+                            setSearchQueryObj({
+                                name: null,
+                                lowestHeight: null,
+                                highestHeight: null,
+                                country: 'W'
+                                })
+                            setSearchBarVisible(false)
+                            }} 
+                            style={styles.searchButton}>
+                            <Text style={styles.searchButtonText}>Show mountains of Wales</Text>
+                        </TouchableHighlight>
+                        </View>
+                        <View style={styles.searchByRangeSectionTitle}>
+                            <Text style={styles.searchTitle}>Search mountain by hight range:</Text>
+                        </View>
+                        <RangeSlider min={1640} max={4411}
+                                    fromValueOnChange={value => setLowestHeight(value)}
+                                    toValueOnChange={value => setHighestHeight(value)}
+                                    initialFromValue={1640}
+                                    styleSize='small'
+                                />
+                    <View style={styles.searchByRangeSection}>
+                        <TouchableHighlight onPress={() => {
+                            setSearchQueryObj({
+                                name: null,
+                                lowestHeight: lowestHeight,
+                                highestHeight: highestHeight,
+                                country: null
+                                })
+                            setSearchBarVisible(false)
+                            }} style={styles.searchButton}>
+                            <Text style={styles.searchButtonText}>Show mountains from {lowestHeight} to {highestHeight} feet.</Text>
+                        </TouchableHighlight>
+                    </View>
+                    <View style={styles.searchSectionOther}>
+                        <TouchableHighlight
+                            underlayColor='0x2e2d4dff'
+                            onPress={() => {
+                                setSearchQueryObj({});
+                            }}
+                            style={styles.searchButton}
+                        >
+                                <Text style={styles.searchButtonText}>
+                                Show all mountains in the UK
+                                </Text>
+                        </TouchableHighlight>
 
-                    <TouchableHighlight
-                        underlayColor='0x2e2d4dff'
-                        onPress={() => {
-                            setSearchBarVisible(false);
-                        }}
-                        style={styles.modalExitButton}
-                    >
-                            <Text style={styles.modalButtonText}>
-                            Close
-                            </Text>
-                    </TouchableHighlight>
-                </View>
-                </SafeAreaView>
+                        <TouchableHighlight
+                            underlayColor='0x2e2d4dff'
+                            onPress={() => {
+                                setSearchBarVisible(false);
+                            }}
+                            style={styles.modalExitButton}
+                        >
+                                <Text style={styles.modalButtonText}>
+                                Close
+                                </Text>
+                        </TouchableHighlight>
+                    </View>
+                    </SafeAreaView>
+
+            </View>
           </Modal>
     );
 };
 
 const styles = StyleSheet.create({
-    searchButton: {
-      borderColor: 0x2e2d4dff,
-      backgroundColor: 0xDDDDF0FF,
-      borderWidth: 1,
-      borderRadius: 15,
-      paddingLeft: 12,
-      paddingRight: 12,
-      paddingTop: 5,
-      paddingBottom: 5,
-      marginTop: 5,
-      marginBottom: 5,
-      width: screenSize.width * 0.8,
-      alignItems: 'center'
-    },
     searchModalView: {
       marginTop: 0,
       marginBottom: 'auto',
@@ -155,7 +145,27 @@ const styles = StyleSheet.create({
       shadowRadius: 4,
       elevation: 5,
     },
+    modalBackground: {
+        width: screenSize.width,
+        height: screenSize.height,
+        backgroundColor: 0x000000bb
+    },
+    searchButton: {
+      borderColor: 0x2e2d4dff,
+      backgroundColor: 0xDDDDF0FF,
+      borderWidth: 1,
+      borderRadius: 15,
+      paddingLeft: 12,
+      paddingRight: 12,
+      paddingTop: 5,
+      paddingBottom: 5,
+      marginTop: 5,
+      marginBottom: 5,
+      width: screenSize.width * 0.8,
+      alignItems: 'center'
+    },
     searchByNameSection: {
+        marginTop: 10,
         alignItems: "center",
     },
     searchNameInputBox: {
@@ -164,17 +174,23 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         width: screenSize.width * 0.8,
         fontSize: 20,
-        padding: 6
+        padding: 6,
+        paddingLeft: 10,
+        marginTop: 4,
+        marginBottom:4
     },
     searchByRangeSection: {
         alignItems: "center",
+    },
+    searchByRangeSectionTitle: {
+        marginTop: 18
     },
     searchByCountrySection: {
         marginTop: 15,
         alignItems: "center",
     },
     searchSectionOther: {
-        marginTop: 30,
+        marginTop: 50,
         marginBottom: 30,
         alignItems: "center",
     },
@@ -187,6 +203,7 @@ const styles = StyleSheet.create({
     },
     searchTitle: {
         fontSize: 20,
+        fontWeight: 'bold',
         marginTop: 3,
         marginBottom: 3
     },
@@ -196,6 +213,9 @@ const styles = StyleSheet.create({
     },
     searchButtonText: {
         fontSize: 16
+    },
+    marginBottom: {
+        marginBottom: 15
     }
 });
 
