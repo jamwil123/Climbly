@@ -50,18 +50,7 @@ export default function App() {
                   </Text>
                 </Pressable>
               ),
-              headerRight: () => (
-                <Pressable
-                  style={styles.searchButton}
-                  onPress={() => {
-                    setSearchBarVisible(true);
-                  }}
-                >
-                  <Text style={styles.sortButtonText}>
-                    search
-                  </Text>
-                </Pressable>
-              ),
+              headerRight: (props) => <Header {...props} />
             }}
           >
             {(props) => <MainView {...props} sortQuery={sortQuery} searchQueryObj={searchQueryObj} setSearchQueryObj={setSearchQueryObj}/>}
@@ -88,7 +77,7 @@ export default function App() {
           }}
            />
         </Stack.Navigator>
-        <Footer navigationRef={navigationRef} />
+        <Footer navigationRef={navigationRef} setSearchBarVisible={setSearchBarVisible}/>
          <View>
           <ModalSort modalVisible={modalVisible} setModalVisible={setModalVisible} setSortQuery={setSortQuery}/>
            <ModalSearch searchBarVisible={searchBarVisible} setSearchBarVisible={setSearchBarVisible} searchQueryObj={searchQueryObj} setSearchQueryObj={setSearchQueryObj}/>

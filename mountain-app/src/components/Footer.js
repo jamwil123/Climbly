@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, Button, TouchableOpacity, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
-import { ModalSearch } from "./ModalSearch";
 
-const Footer = ({ navigationRef }) => {
+const Footer = ({ navigationRef, setSearchBarVisible }) => {
   return (
     <TouchableOpacity onPress={() => {}}>
       <View style={styles.footer}>
@@ -15,6 +14,15 @@ const Footer = ({ navigationRef }) => {
           style={styles.homebutton}
           onPress={() => {
             navigationRef.current.navigate("Mountain App");
+          }}
+        />
+        <FontAwesome
+          name="search"
+          size={40}
+          color={"black"}
+          style={styles.userbutton}
+          onPress={() => {
+            setSearchBarVisible(true)
           }}
         />
         <FontAwesome
@@ -38,20 +46,25 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 75,
         display: "flex",
-        flexDirection: 'row'
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     },
     homebutton: {
-        justifyContent: 'flex-start',
+        // justifyContent: 'flex-start',
         flex: 1,
         paddingLeft:40,
         paddingTop: 15, 
-        paddingRight: 40
+        // paddingRight: 40
+    },
+    searchbutton: {
+        flex: 1,
     },
     userbutton: {
-        justifyContent: 'flex-end',
+        flex: 1,
         textAlign: "right",
         paddingRight : 40,
-        paddingTop: 17
+        paddingTop: 17,
+        paddingLeft: 30,
     }
   });
 
