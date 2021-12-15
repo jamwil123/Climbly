@@ -21,34 +21,38 @@ const UserPage = () => {
   const [page, setPage] = React.useState(0);
   return (
     <ScrollView style={styles.mainview}>
-      <View>
-        <TouchableOpacity
-          onPress={(event) => {
-            setPage(0);
-          }}
-        >
-          <Text>Profile</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={(event) => {
-            setPage(1);
-          }}
-        >
-          <Text>Complete Mountains</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={(event) => {
-            setPage(2);
-          }}
-        >
-          <Text>Achievement</Text>
-        </TouchableOpacity>
+      <View style={styles.NavContainer}>
+        <View style={styles.NavBar}>
+          <TouchableOpacity
+            onPress={(event) => {
+              setPage(1);
+            }}
+          >
+            <Text>Profile</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={(event) => {
+              setPage(2);
+            }}
+          >
+            <Text>Complete Mountains</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={(event) => {
+              setPage(0);
+            }}
+          >
+            <Text>Achievement</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-      <Swiper showsButtons={true} index={page}>
-        <UserMap />
-        <UsersCompleteMountain />
-        <Achievement />
-      </Swiper>
+      <View style={styles.swipeArea}>
+        <Swiper showsButtons={false} index={page}>
+          <UserMap />
+          <UsersCompleteMountain />
+          <Achievement />
+        </Swiper>
+      </View>
       <Button
         title="Log Out"
         onPress={() => {
@@ -62,6 +66,22 @@ const UserPage = () => {
 const styles = StyleSheet.create({
   mainview: {
     backgroundColor: 0x2e2d4dff,
+  },
+  NavContainer: {
+    width: "100%",
+    height: 60,
+    position: "relative",
+    alignItems: "center",
+  },
+  NavBar: {
+    flexDirection: "row",
+    backgroundColor: "#eee",
+    width: "100%",
+    justifyContent: "space-evenly",
+  },
+  swipeArea: {},
+  IconBehave: {
+    padding: 14,
   },
 });
 
