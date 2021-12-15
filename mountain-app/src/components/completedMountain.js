@@ -8,6 +8,9 @@ import { updateUser } from "../utils/api";
 export default function CompletedMountain({ mountainObj }) {
   const [checked, setChecked] = React.useState(false);
   const { currentUser, setCurrentUser } = useContext(userContext);
+  let completedContainerColor
+  checked ? completedContainerColor = styles.completedContainerColorTrue : completedContainerColor = styles.completedContainerColorFalse
+
   React.useEffect(() => {
     updateUser(currentUser, currentUser);
   }, [checked]);
@@ -56,13 +59,14 @@ export default function CompletedMountain({ mountainObj }) {
   }
 
   return currentUser.userToken ? (
-    <View>
+    <View style={[styles.checkBoxContainer, completedContainerColor]}>
       <BouncyCheckbox
         size={25}
         fillColor="red"
         unfillColor="#FFFFFF"
         text="Completed?"
-        iconStyle={{ borderColor: "red" }}
+        iconStyle={{ borderColor: 0xDDDDF0FF }}
+        textStyle={{ color: 'white', textDecorationLine: 'none'}}
         isChecked={checked}
         disableBuiltInState={true}
         onPress={() => {
@@ -75,4 +79,22 @@ export default function CompletedMountain({ mountainObj }) {
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  checkBoxContainer: {
+    borderColor: 0xDDDDF0FF,
+    borderWidth: 1,
+    borderRadius: 15,
+    width: '95%',
+    height: 40,
+    marginTop: 5,
+    marginBottom: 15,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  completedContainerColorFalse: {
+    backgroundColor: 0x1a2b47ff
+  },
+  completedContainerColorTrue: {
+    backgroundColor: 0x2D5C4Fff
+  },
+});

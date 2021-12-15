@@ -23,10 +23,8 @@ const SingleMountain = ({ route }) => {
           <Text style={styles.textbox_hillname}>
             {route.params.mountain.hillname}
           </Text>
-          <CompletedMountain
-            mountainObj={route.params.mountain}
-          ></CompletedMountain>
         </View>
+        <CompletedMountain mountainObj={route.params.mountain}/>
         <View>
           <TouchableOpacity disabled={true}>
             <MapView
@@ -103,6 +101,11 @@ const SingleMountain = ({ route }) => {
 const styles = StyleSheet.create({
   mainview: {
     backgroundColor: 0xe0e1f0FF,
+  },
+  title: {
+    marginTop: 2,
+    paddingTop: 7,
+    width: '100%', 
   },
   container: {
     backgroundColor: 0x2b3a67ff,
