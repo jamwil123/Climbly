@@ -5,8 +5,8 @@ const db = axios.create({
 });
 
 const weatherURL = axios.create({
-  baseURL: "http://api.openweathermap.org"
-})
+  baseURL: "http://api.openweathermap.org",
+});
 
 export const getMountains = (lastHillId) => {
   let query = "";
@@ -37,7 +37,12 @@ export const getUser = (uid) => {
 };
 
 export const getWeather = (lat, lon) => {
-  return weatherURL.get(`/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,daily&units=metric&appid=751c6da99643d39ece34886f441a3e1c`).then((res)=> {
-    return res.data
-  })
-}
+  return weatherURL
+    .get(
+      `/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,daily&units=metric&appid=751c6da99643d39ece34886f441a3e1c`
+    )
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => console.log(error));
+};

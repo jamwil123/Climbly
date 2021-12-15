@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -16,48 +16,56 @@ const screenSize = Dimensions.get("screen");
 
 const SingleMountain = ({ route }) => {
   const [weather, setWeather] = useState({
-    "current": {
-      "clouds": 100,
-      "dew_point": 1.19,
-      "dt": 1639476164,
-      "feels_like": -2.06,
-      "humidity": 95,
-      "pressure": 1015,
-      "sunrise": 1639471776,
-      "sunset": 1639496391,
-      "temp": 1.9,
-      "uvi": 0,
-      "visibility": 570,
-      "weather": [
+    current: {
+      clouds: 100,
+      dew_point: 1.19,
+      dt: 1639476164,
+      feels_like: -2.06,
+      humidity: 95,
+      pressure: 1015,
+      sunrise: 1639471776,
+      sunset: 1639496391,
+      temp: 1.9,
+      uvi: 0,
+      visibility: 570,
+      weather: [
         {
-          "description": "overcast clouds",
-          "icon": "04d",
-          "id": 804,
-          "main": "Clouds"
-        }
+          description: "overcast clouds",
+          icon: "04d",
+          id: 804,
+          main: "Clouds",
+        },
       ],
-      "wind_deg": 206,
-      "wind_gust": 10.04,
-      "wind_speed": 4.18
+      wind_deg: 206,
+      wind_gust: 10.04,
+      wind_speed: 4.18,
     },
-    "lat": 56.7417,
-    "lon": -4.9834,
-    "minutely": [ {
-        "dt": 1639476180,
-        "precipitation": 0
-      }
+    lat: 56.7417,
+    lon: -4.9834,
+    minutely: [
+      {
+        dt: 1639476180,
+        precipitation: 0,
+      },
     ],
-    "timezone": "Europe/London",
-    "timezone_offset": 0
-  })
+    timezone: "Europe/London",
+    timezone_offset: 0,
+  });
 
   useEffect(() => {
-    getWeather(route.params.mountain.latitude, route.params.mountain.longitude).then((res)=> {
-      setWeather(res)
-    })
-  }, [])
+    getWeather(route.params.mountain.latitude, route.params.mountain.longitude)
+      .then((res) => {
+        setWeather(res);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
-  console.log(Object.keys(weather.current))
+  const sunRise = new Date(weather.current.sunrise * 1000)
+    .toTimeString()
+    .split(" ")[0];
+  const sunSet = new Date(weather.current.sunset * 1000)
+    .toTimeString()
+    .split(" ")[0];
 
   return (
     <ScrollView style={styles.mainview}>
@@ -108,8 +116,6 @@ const SingleMountain = ({ route }) => {
             <Text style={styles.textbox_info}>Longitude:</Text>
             <Text style={styles.textbox_info}>Latitude: </Text>
           </View>
-          <Text>{weather.current.temp} °c</Text>
-          
           <View style={styles.infoRight}>
             <Text style={styles.textbox_info}>
               {route.params.mountain.feet}{" "}
@@ -129,6 +135,12 @@ const SingleMountain = ({ route }) => {
           <Text>{route.params.mountain.classification}</Text>
         </View>
         <View style={styles.weather}></View>
+        <View>
+          <Text>{weather.current.temp} °C</Text>
+          <Text>{weather.current.weather[0].description}</Text>
+          <Text>{sunRise}</Text>
+          <Text>{sunSet}</Text>
+        </View>
         <View style={styles.img}>
           <Image
             source={{ uri: route.params.mountain.img_hres_url }}

@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Header from "./src/components/Header";
 import MainView from "./src/components/MainView";
 import Footer from "./src/components/Footer";
 import SingleMountain from "./src/components/SingleMountain";
