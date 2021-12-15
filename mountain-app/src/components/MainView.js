@@ -8,6 +8,7 @@ import { userContext } from "../contexts/userContext";
 let lastHillId = null;
 let lastSortValue = 'hillname';
 let lastOrderValue = 'ASC';
+let lastSearchState = {};
 
 const isSortChanged = (value) => {
   if (value !== lastSortValue) {
@@ -27,24 +28,44 @@ const isOrderChanged = (value) => {
   }
 };
 
-const MainView = ({ navigation, sortQuery }) => {
+const isSearchChanged = (object) => {
+  if (Object.keys(object).length === Object.keys(lastSearchState).length) {
+    if (object.name !== lastSearchState.name || object.country !== lastSearchState.country || object.lowestHeight !== lastSearchState.lowestHeight || object.highestHeight !== lastSearchState.highestHeight) {
+      lastSearchState = object
+      return true
+    } else {
+      return false
+    }
+  } else {
+    lastSearchState = object
+    return true;
+  }
+};
+
+const MainView = ({ navigation, sortQuery, searchQueryObj }) => {
   const { currentUser } = useContext(userContext);
   const HillCardRef = useRef();
 
   const { sort, order } = sortQuery;
+  const { name, lowestHeight, highestHeight, country } = searchQueryObj
   const { data, addData, resetData, onEndReached, pageIndex, ListFooterComponent } = usePagination(10);
 
-  if (isOrderChanged(order) || isSortChanged(sort)) {
+  if (isOrderChanged(order) || isSortChanged(sort) || isSearchChanged(searchQueryObj)) {
     lastHillId = null;
     resetData([]);
-  }
+  } 
 
   useEffect(() => {
-    getMountains(lastHillId, sort, order).then((mountains) => {
-      lastHillId = mountains[9].id;
-      addData(mountains);
-    });
-  }, [pageIndex, sort, order]);
+          getMountains(lastHillId, sort, order, searchQueryObj).then((mountains) => {
+            if (mountains.length >= 9) {
+              lastHillId = mountains[9].id;
+            } else {
+              lastHillId = null;
+            }
+            addData(mountains);
+          });
+  }, [pageIndex, sort, order, name, lowestHeight, highestHeight, country]);
+
 
   return (
     <View style={styles.mainview}>
@@ -60,15 +81,16 @@ const MainView = ({ navigation, sortQuery }) => {
                 navigation.push("SingleMountainPage", { mountain: item });
               }}
               underlayColor="white"
+              key={item.hillnumber}
             >
               <View ref={HillCardRef}>
-                <HillCard key={item.hillnumber} hillObject={item} />
+                <HillCard hillObject={item} />
               </View>
             </TouchableHighlight>
           );
         }}
         keyExtractor={(item) => {
-          item.hillnumber;
+          item.id;
         }}
       />
     </View>

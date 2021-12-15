@@ -4,9 +4,9 @@ const db = axios.create({
   baseURL: "https://mountain-server-api.herokuapp.com/api",
 });
 
-export const getMountains = (lastHillId, sort, order) => {
+export const getMountains = (lastHillId, sort, order, searchQueryObj) => {
   let query = "";
-  // console.log(sort, order);
+
   if (lastHillId !== null) {
     query += `?lastVisibleHill=${lastHillId}`;
   }
@@ -19,12 +19,12 @@ export const getMountains = (lastHillId, sort, order) => {
   }
 
   return db
-    .get(`/mountains${query}`)
+    .post(`/mountains${query}`, searchQueryObj)
     .then((res) => {
       return res.data.mountains;
     })
     .catch((err) => {
-      console.log(err);
+      console.log('ERRRRRRRRRRRRRRRROR', err);
     });
 };
 
@@ -40,8 +40,8 @@ export const getUser = (uid) => {
   });
 };
 
-export const sortMountains = (sort, order) => {
-  return db.get(`/mountains?sortBy=${sort}&orderBy=${order}`).then((res) => {
-    return res.data.mountains;
-  });
-};
+// export const sortMountains = (sort, order) => {
+//   return db.get(`/mountains?sortBy=${sort}&orderBy=${order}`).then((res) => {
+//     return res.data.mountains;
+//   });
+// };
