@@ -34,9 +34,24 @@ export default function App() {
           <Stack.Screen
             name="SingleMountainPage"
             component={SingleMountain}
+            options={{
+              headerTitle: "",
+              headerRight: (props) => <Header {...props} />,
+              headerStyle: {
+                backgroundColor: 0xAAADC4FF,
+              },
+            }}
             initialParams={{ mountain: {} }}
           />
-          <Stack.Screen name="UserPage" component={UserMain} />
+          <Stack.Screen name="UserPage" component={UserMain}
+          options={{
+            headerTitle: "",
+            headerRight: (props) => <Header {...props} />,
+            headerStyle: {
+              backgroundColor: 0xAAADC4FF,
+            },
+          }}
+           />
         </Stack.Navigator>
         <Footer  navigationRef={navigationRef} />
       </NavigationContainer>

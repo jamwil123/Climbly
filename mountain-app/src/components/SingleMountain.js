@@ -155,7 +155,8 @@ const SingleMountain = ({ route }) => {
 
 const styles = StyleSheet.create({
   mainview: {
-    backgroundColor: 0x2e2d4dff,
+    backgroundColor: "#FAF9F6",
+    
   },
   container: {
     backgroundColor: 0x2b3a67ff,
@@ -168,6 +169,11 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     borderColor: 0xaaadc4ff,
     borderWidth: 1,
+    shadowColor: "#000",
+    shadowOffset: { width: 5, height: 5 },
+    shadowOpacity: 0.8,
+    shadowRadius: 3,
+    elevation: 10,
   },
   image: {
     borderRadius: 14,
