@@ -16,9 +16,6 @@ import ClassBadge from '../components/ClassBadge'
 const screenSize = Dimensions.get("screen");
 
 const SingleMountain = ({ route }) => {
-<<<<<<< HEAD
-  
-=======
   const [weather, setWeather] = useState({
     current: {
       clouds: 100,
@@ -70,7 +67,6 @@ const SingleMountain = ({ route }) => {
   const sunSet = new Date(weather.current.sunset * 1000)
     .toTimeString()
     .split(" ")[0];
->>>>>>> weatherSpike
 
   return (
     <ScrollView style={styles.mainview}>

@@ -7,6 +7,7 @@ import Footer from "./src/components/Footer";
 import SingleMountain from "./src/components/SingleMountain";
 import UserMain from "./src/components/UserMain";
 import { userContext } from "./src/contexts/userContext";
+import Header from "./src/components/Header";
 
 const Stack = createNativeStackNavigator();
 
@@ -22,8 +23,10 @@ export default function App() {
           <Stack.Screen
             name="Mountain App"
             component={MainView}
-            options={{ headerTitle: 'Home', 
-            headerRight : props => <Header {...props} /> }} 
+            options={{
+              headerTitle: "Home",
+              headerRight: (props) => <Header {...props} />,
+            }}
           />
           <Stack.Screen
             name="SingleMountainPage"
