@@ -42,7 +42,6 @@ const LoginScreen = () => {
       .signInWithEmailAndPassword(email, password)
       .then((userCredentials) => {
         const user = userCredentials.user;
-        console.log("Logged in with:", user.email);
         return userCredentials.user.uid;
       })
       .then((uid) => {

@@ -23,9 +23,8 @@ export default function App() {
           <Stack.Screen
             name="Mountain App"
             component={MainView}
-            options={{
-              headerShown: true,
-            }}
+            options={{ headerTitle: 'Home', 
+            headerRight : props => <Header {...props} /> }} 
           />
           <Stack.Screen
             name="SingleMountainPage"

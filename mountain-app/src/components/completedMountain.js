@@ -63,7 +63,6 @@ export default function CompletedMountain({ mountainObj }) {
         unfillColor="#FFFFFF"
         text="Completed?"
         iconStyle={{ borderColor: "red" }}
-        textStyle={{ fontFamily: "JosefinSans-Regular" }}
         isChecked={checked}
         disableBuiltInState={true}
         onPress={() => {
