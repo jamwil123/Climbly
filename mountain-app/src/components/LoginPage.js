@@ -1,6 +1,12 @@
-import { useNavigation } from "@react-navigation/core";
-import React, { useEffect, useState } from "react";
-import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import React, { useState } from "react";
+import {
+  KeyboardAvoidingView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { auth } from "../../firebase";
 import { userContext } from "../contexts/userContext";
 import { useContext } from "react";
@@ -14,8 +20,6 @@ const LoginScreen = () => {
   const { currentUser, setCurrentUser } = useContext(userContext);
   const [register, setRegister] = useState(false);
 
-  const navigation = useNavigation();
-
   const handleSignUp = () => {
     auth
       .createUserWithEmailAndPassword(email, password)
@@ -27,8 +31,7 @@ const LoginScreen = () => {
       .then((uid) => {
         const newUser = {
           name: name,
-          img_url: avatar_url
-            
+          img_url: avatar_url,
         };
         postUser(uid, newUser).then((userObj) => {
           setCurrentUser(userObj);
@@ -103,7 +106,12 @@ const LoginScreen = () => {
           style={styles.input}
           secureTextEntry
         />
-        <TextInput placeholder="Name" value={name} onChangeText={(text) => setName(text)} style={styles.input} />
+        <TextInput
+          placeholder="Name"
+          value={name}
+          onChangeText={(text) => setName(text)}
+          style={styles.input}
+        />
         <TextInput
           placeholder="Avatar URL"
           value={avatar_url}
@@ -113,7 +121,10 @@ const LoginScreen = () => {
       </View>
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={handleSignUp} style={[styles.button, styles.buttonOutline]}>
+        <TouchableOpacity
+          onPress={handleSignUp}
+          style={[styles.button, styles.buttonOutline]}
+        >
           <Text style={styles.buttonOutlineText}>Sign up</Text>
         </TouchableOpacity>
       </View>

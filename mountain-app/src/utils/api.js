@@ -4,6 +4,10 @@ const db = axios.create({
   baseURL: "https://mountain-server-api.herokuapp.com/api",
 });
 
+const weatherURL = axios.create({
+  baseURL: "http://api.openweathermap.org",
+});
+
 export const getMountains = (lastHillId) => {
   let query = "";
   if (lastHillId !== null) {
@@ -30,4 +34,15 @@ export const getUser = (uid) => {
   return db.get(`/users/${uid}`).then((res) => {
     return res.data.user;
   });
+};
+
+export const getWeather = (lat, lon) => {
+  return weatherURL
+    .get(
+      `/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,daily&units=metric&appid=751c6da99643d39ece34886f441a3e1c`
+    )
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => console.log(error));
 };
