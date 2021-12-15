@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
         height: 75,
         display: "flex",
         flexDirection: 'row'
-    },homebutton: {
+    },
+    homebutton: {
         justifyContent: 'flex-start',
         flex: 1,
         paddingLeft:40,
@@ -45,7 +46,6 @@ const styles = StyleSheet.create({
         paddingRight : 40,
         paddingTop: 17
     }
-
   });
 
 export default Footer;

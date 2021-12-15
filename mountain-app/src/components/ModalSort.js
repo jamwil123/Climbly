@@ -69,7 +69,7 @@ const ModalSort = ({modalVisible, setModalVisible, setSortQuery}) => {
                   style={styles.modalExitButton}
               >
                     <Text style={styles.modalButtonText}>
-                    X
+                    Close
                     </Text>
               </TouchableHighlight>
             </View>

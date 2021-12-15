@@ -10,13 +10,17 @@ const HillCard = (props) => {
     : hillname;
 
   let difficultyRating;
+  let difficultyColor;
 
-  if (props.hillObject.feet <= 1000) {
+  if (props.hillObject.feet <= 2200) {
     difficultyRating = "Easy";
-  } else if (props.hillObject.feet > 1000 && props.hillObject.feet < 2500) {
+    difficultyColor = styles.difficultyColorEasy
+  } else if (props.hillObject.feet > 2200 && props.hillObject.feet < 3500) {
     difficultyRating = "Moderate";
+    difficultyColor = styles.difficultyColorModerate
   } else {
     difficultyRating = "Hard";
+    difficultyColor = styles.difficultyColorHard
   }
 
   return (
@@ -30,7 +34,9 @@ const HillCard = (props) => {
       <View style={styles.textbox}>
         <Text style={styles.textbox_hillname}>{hillname}</Text>
         <View style={styles.heightAndDifficulty}>
-        <Text style={styles.difficulty}>{difficultyRating}</Text>
+        <View style={[styles.difficulty, difficultyColor]}>
+          <Text style={styles.difficultyText}>{difficultyRating}</Text>
+        </View>
         <Text style={styles.textbox_hillheight}>
           {props.hillObject.feet} feet
         </Text>
@@ -42,15 +48,26 @@ const HillCard = (props) => {
 
 const styles = StyleSheet.create({
   difficulty: {
-    color: "#ffffff",
-    fontSize: 20,
-    paddingTop: 10,
+    marginTop: 2,
     borderRadius: 10,
-  borderWidth: 1,
-  borderColor: '#fff',
-  padding: 5,
-  backgroundColor: 'black',
-  
+    borderWidth: 1,
+    borderColor: '#fff',
+    padding: 4,
+    width: screenSize.width * 0.25,
+    alignItems: 'center'
+  },
+  difficultyColorEasy: {
+    backgroundColor: 0x08630dFF,
+  },
+  difficultyColorModerate: {
+    backgroundColor: 0x796507FF,
+  },
+  difficultyColorHard: {
+    backgroundColor: 0x7a2d0aFF,
+  },
+  difficultyText: {
+    color: "#ffffff",
+    fontSize: 20
   },
   heightAndDifficulty: {
     display:'flex',
@@ -59,7 +76,7 @@ const styles = StyleSheet.create({
   hillcard: {
     backgroundColor: 0x2b3a67ff,
     alignItems: "center",
-    height: screenSize.height * 0.38,
+    height: screenSize.height * 0.39,
     marginTop: 10,
     padding: 15,
     marginBottom: 3,
