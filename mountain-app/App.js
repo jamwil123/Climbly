@@ -2,12 +2,12 @@ import React, { useRef, useState } from "react";
 import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Header from "./src/components/Header";
 import MainView from "./src/components/MainView";
 import Footer from "./src/components/Footer";
 import SingleMountain from "./src/components/SingleMountain";
 import UserMain from "./src/components/UserMain";
 import { userContext } from "./src/contexts/userContext";
+import Header from "./src/components/Header";
 
 const Stack = createNativeStackNavigator();
 
@@ -24,17 +24,36 @@ export default function App() {
             name="Mountain App"
             component={MainView}
             options={{
-              headerShown: true,
+              headerStyle: {
+                backgroundColor: 0xAAADC4FF,
+              },
+              headerTitle: "Climbly",
+              headerRight: (props) => <Header {...props} />,
             }}
           />
           <Stack.Screen
             name="SingleMountainPage"
             component={SingleMountain}
+            options={{
+              headerTitle: "",
+              headerRight: (props) => <Header {...props} />,
+              headerStyle: {
+                backgroundColor: 0xAAADC4FF,
+              },
+            }}
             initialParams={{ mountain: {} }}
           />
-          <Stack.Screen name="UserPage" component={UserMain} />
+          <Stack.Screen name="UserPage" component={UserMain}
+          options={{
+            headerTitle: "",
+            headerRight: (props) => <Header {...props} />,
+            headerStyle: {
+              backgroundColor: 0xAAADC4FF,
+            },
+          }}
+           />
         </Stack.Navigator>
-        <Footer navigationRef={navigationRef} />
+        <Footer  navigationRef={navigationRef} />
       </NavigationContainer>
     </userContext.Provider>
   );

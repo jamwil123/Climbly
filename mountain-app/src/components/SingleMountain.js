@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -9,11 +9,65 @@ import {
   TouchableOpacity,
 } from "react-native";
 import MapView from "react-native-maps";
+import { getWeather } from "../utils/api";
 import CompletedMountain from "./completedMountain";
+import ClassBadge from '../components/ClassBadge'
 
 const screenSize = Dimensions.get("screen");
 
 const SingleMountain = ({ route }) => {
+  const [weather, setWeather] = useState({
+    current: {
+      clouds: 100,
+      dew_point: 1.19,
+      dt: 1639476164,
+      feels_like: -2.06,
+      humidity: 95,
+      pressure: 1015,
+      sunrise: 1639471776,
+      sunset: 1639496391,
+      temp: 1.9,
+      uvi: 0,
+      visibility: 570,
+      weather: [
+        {
+          description: "overcast clouds",
+          icon: "04d",
+          id: 804,
+          main: "Clouds",
+        },
+      ],
+      wind_deg: 206,
+      wind_gust: 10.04,
+      wind_speed: 4.18,
+    },
+    lat: 56.7417,
+    lon: -4.9834,
+    minutely: [
+      {
+        dt: 1639476180,
+        precipitation: 0,
+      },
+    ],
+    timezone: "Europe/London",
+    timezone_offset: 0,
+  });
+
+  useEffect(() => {
+    getWeather(route.params.mountain.latitude, route.params.mountain.longitude)
+      .then((res) => {
+        setWeather(res);
+      })
+      .catch((error) => console.log(error, 'Weather UseEffect'));
+  }, []);
+
+  const sunRise = new Date(weather.current.sunrise * 1000)
+    .toTimeString()
+    .split(" ")[0];
+  const sunSet = new Date(weather.current.sunset * 1000)
+    .toTimeString()
+    .split(" ")[0];
+
   return (
     <ScrollView style={styles.mainview}>
       <View style={styles.container}>
@@ -79,9 +133,15 @@ const SingleMountain = ({ route }) => {
           </View>
         </View>
         <View style={styles.classification}>
-          <Text>{route.params.mountain.classification}</Text>
+          <ClassBadge classificationObj={route.params.mountain.classification}/>
         </View>
         <View style={styles.weather}></View>
+        <View>
+          <Text>{weather.current.temp} °C</Text>
+          <Text>{weather.current.weather[0].description}</Text>
+          <Text>{sunRise}</Text>
+          <Text>{sunSet}</Text>
+        </View>
         <View style={styles.img}>
           <Image
             source={{ uri: route.params.mountain.img_hres_url }}
@@ -95,7 +155,8 @@ const SingleMountain = ({ route }) => {
 
 const styles = StyleSheet.create({
   mainview: {
-    backgroundColor: 0x2e2d4dff,
+    backgroundColor: "#FAF9F6",
+    
   },
   container: {
     backgroundColor: 0x2b3a67ff,
@@ -108,6 +169,11 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     borderColor: 0xaaadc4ff,
     borderWidth: 1,
+    shadowColor: "#000",
+    shadowOffset: { width: 5, height: 5 },
+    shadowOpacity: 0.8,
+    shadowRadius: 3,
+    elevation: 10,
   },
   image: {
     borderRadius: 14,

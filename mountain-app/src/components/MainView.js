@@ -31,6 +31,7 @@ const MainView = ({ navigation }) => {
         renderItem={({ item, index, separators }) => {
           return (
             <TouchableHighlight
+            key={item.hillnumber}
               onPress={() => {
                 navigation.push("SingleMountainPage", { mountain: item });
               }}
@@ -52,7 +53,7 @@ const MainView = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   mainview: {
-    backgroundColor: 0x2e2d4dff,
+    backgroundColor: "#FFFFFF", 
     alignItems: "stretch",
     justifyContent: "center",
     width: "100%",
