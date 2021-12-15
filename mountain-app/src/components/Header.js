@@ -15,15 +15,4 @@ const Header = () => {
     );
 };
 
-// const styles = StyleSheet.create({
-//     header: {
-//         marginTop: 40,
-//         backgroundColor: 0xAAADC4FF,
-//         alignItems: 'center',
-//         justifyContent: 'center',
-//         width: '100%',
-//         height: 75
-//     },
-//   });
-
 export default Header;

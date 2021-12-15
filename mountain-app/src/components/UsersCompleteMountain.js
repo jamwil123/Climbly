@@ -6,7 +6,6 @@ import HillCard from "./HillCard.js";
 
 export default function UsersCompleteMountain() {
   const { currentUser } = useContext(userContext);
-
   return (
     <View style={styles.cardViews}>
       <FlatList

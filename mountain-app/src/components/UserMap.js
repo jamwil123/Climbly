@@ -67,6 +67,11 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     borderColor: 0xaaadc4ff,
     borderWidth: 1,
+    shadowColor: "#000",
+    shadowOffset: { width: 5, height: 5 },
+    shadowOpacity: 0.6,
+    shadowRadius: 3,
+    elevation: 5,
   },
   map: {
     borderColor: 0x000000ff,
