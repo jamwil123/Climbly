@@ -3,6 +3,7 @@ import { Image, Text, View, Dimensions, StyleSheet } from "react-native";
 import MapView from "react-native-maps";
 import { useContext } from "react";
 import { userContext } from "../contexts/userContext";
+
 const screenSize = Dimensions.get("screen");
 
 export default function UserMap() {

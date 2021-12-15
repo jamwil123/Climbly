@@ -6,23 +6,17 @@ import HillCard from "./HillCard.js";
 
 export default function UsersCompleteMountain() {
   const { currentUser } = useContext(userContext);
-  const HillCardRef = React.useRef();
+
   return (
     <View style={styles.cardViews}>
       <FlatList
         data={currentUser.hillsClimbed}
+        style={styles.flatList}
         renderItem={({ item }) => {
           return (
-            <TouchableHighlight
-              onPress={() => {
-                navigation.push("SingleMountainPage", { mountain: item });
-              }}
-              underlayColor="white"
-            >
-              <View ref={HillCardRef}>
+              <View>
                 <HillCard key={item.hillnumber} hillObject={item} />
               </View>
-            </TouchableHighlight>
           );
         }}
         keyExtractor={(item) => {
@@ -34,11 +28,15 @@ export default function UsersCompleteMountain() {
 }
 const styles = StyleSheet.create({
   cardViews: {
-    backgroundColor: 0x2e2d4dff,
+    backgroundColor: 0xe0e1f0FF,
     alignItems: "stretch",
     justifyContent: "center",
     width: "100%",
     height: "100%",
     padding: 0,
+    marginTop: 0,
   },
+  flatList: {
+    marginBottom: 0
+  }
 });

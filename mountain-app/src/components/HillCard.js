@@ -48,7 +48,7 @@ const HillCard = (props) => {
 
 const styles = StyleSheet.create({
   difficulty: {
-    marginTop: 2,
+    marginTop: 7,
     borderRadius: 10,
     borderWidth: 1,
     borderColor: '#fff',

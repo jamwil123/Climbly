@@ -8,7 +8,7 @@ const Header = () => {
         <View >
         <Image
         source={require('../../img/final-logo.png')}
-        style = {{height: 40, width:60}}
+        style = {{height: 40, width:60, marginBottom:8}}
         
       ></Image>
         </View>
