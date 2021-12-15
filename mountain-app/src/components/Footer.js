@@ -10,13 +10,13 @@ const Footer = ({navigationRef}) => {
     return (
         <TouchableOpacity onPress={() => {setHome(!home)}}>
         <View style={styles.footer}>
-<Ionicons name="home" size={40} color={home ? 'grey' : 'black'} style={styles.homebutton} onPress={() => {
+<Ionicons name="home" size={40} color={'black'} style={styles.homebutton} onPress={() => {
     setUser(true)
     navigationRef.current.navigate("Mountain App")
     
     
 }} />
-<FontAwesome name="user" size={40} color={user ? 'grey' : 'black'} style={styles.userbutton} onPress={() => {
+<FontAwesome name="user" size={40} color={'black'} style={styles.userbutton} onPress={() => {
     setHome(false)
     navigationRef.current.navigate("UserPage")
 }}/>

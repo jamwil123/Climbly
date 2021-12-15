@@ -7,9 +7,9 @@ export default ClassBadge = ({classificationObj}) => {
     
         arr.map((classDesc) => {
           if (classDesc === "M") {
-            imgVal = require("../../final-ms.png");
+            imgVal = require("../../img/final-ms.png");
           } else if (classDesc === "W") {
-            imgVal = require("../../final-WR.png");
+            imgVal = require("../../img/final-WR.png");
           }
         });
 

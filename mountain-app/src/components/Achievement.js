@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Image, Alert} from "react-native";
 import { useContext } from "react";
 import { userContext } from "../contexts/userContext";
 
@@ -9,7 +9,7 @@ export default function Achievement() {
     if (currentUser.noOfHillsClimbed < 5) {
       return (
         <View>
-          <Text>no medals has being achieved yet</Text>
+          <Text>Complete more mountains to win badges! </Text>
         </View>
       );
     }
@@ -19,7 +19,11 @@ export default function Achievement() {
     ) {
       return (
         <View>
-          <Text>medal-1</Text>
+          <Image
+            source={require("../../img/final-5.png")}
+            style={{ height: 150, width: 150 }}
+          />
+          
         </View>
       );
     }
@@ -29,9 +33,16 @@ export default function Achievement() {
     ) {
       return (
         <View>
-          <Text>medal-2</Text>
+          <Image
+            source={require("../../img/final-5.png")}
+            style={{ height: 150, width: 150 }}
+          />
+          <Image
+            source={require("../../img/final-10.png")}
+            style={{ height: 150, width: 150 }}
+          />
         </View>
-      );
+      )
     }
     if (
       currentUser.noOfHillsClimbed >= 20 &&
@@ -39,14 +50,40 @@ export default function Achievement() {
     ) {
       return (
         <View>
-          <Text>medal-3</Text>
+          <Image
+            source={require("../../img/final-5.png")}
+            style={{ height: 150, width: 150 }}
+          />
+          <Image
+            source={require("../../img/final-10.png")}
+            style={{ height: 150, width: 150 }}
+          />
+          <Image
+            source={require("../../img/final-20.png")}
+            style={{ height: 150, width: 150 }}
+          />
         </View>
       );
     }
     if (currentUser.totalFeetClimbed >= 50) {
       return (
         <View>
-          <Text>medal-4</Text>
+          <Image
+            source={require("../../img/final-5.png")}
+            style={{ height: 150, width: 150 }}
+          />
+          <Image
+            source={require("../../img/final-10.png")}
+            style={{ height: 150, width: 150 }}
+          />
+          <Image
+            source={require("../../img/final-20.png")}
+            style={{ height: 150, width: 150 }}
+          />
+          <Image
+            source={require("../../img/final-50.png")}
+            style={{ height: 150, width: 150 }}
+          />
         </View>
       );
     }

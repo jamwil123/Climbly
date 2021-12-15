@@ -24,7 +24,10 @@ export default function App() {
             name="Mountain App"
             component={MainView}
             options={{
-              headerTitle: "Home",
+              headerStyle: {
+                backgroundColor: 0xAAADC4FF,
+              },
+              headerTitle: "Climbly",
               headerRight: (props) => <Header {...props} />,
             }}
           />
@@ -35,7 +38,7 @@ export default function App() {
           />
           <Stack.Screen name="UserPage" component={UserMain} />
         </Stack.Navigator>
-        <Footer navigationRef={navigationRef} />
+        <Footer  navigationRef={navigationRef} />
       </NavigationContainer>
     </userContext.Provider>
   );

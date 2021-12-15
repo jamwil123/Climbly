@@ -58,7 +58,7 @@ const SingleMountain = ({ route }) => {
       .then((res) => {
         setWeather(res);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error, 'Weather UseEffect'));
   }, []);
 
   const sunRise = new Date(weather.current.sunrise * 1000)

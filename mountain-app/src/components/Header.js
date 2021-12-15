@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View, Dimensions, Image } from 'react-native';
-import logo from '../../final-logo.png'
 
 const screen = Dimensions.get("screen")
 
@@ -8,7 +7,7 @@ const Header = () => {
     return (
         <View >
         <Image
-        source={require('../../final-logo.png')}
+        source={require('../../img/final-logo.png')}
         style = {{height: 40, width:60}}
         
       ></Image>
