@@ -99,7 +99,7 @@ const MainView = ({ navigation, sortQuery, searchQueryObj }) => {
 
 const styles = StyleSheet.create({
   mainview: {
-    backgroundColor: "#FFFFFF", 
+    backgroundColor: 0xe0e1f0FF, 
     alignItems: "stretch",
     justifyContent: "center",
     width: "100%",
