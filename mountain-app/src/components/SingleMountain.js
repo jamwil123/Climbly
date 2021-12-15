@@ -16,58 +16,6 @@ import Weather from "./Weather";
 const screenSize = Dimensions.get("screen");
 
 const SingleMountain = ({ route }) => {
-  // const [weather, setWeather] = useState({
-  //   current: {
-  //     clouds: 100,
-  //     dew_point: 1.19,
-  //     dt: 1639476164,
-  //     feels_like: -2.06,
-  //     humidity: 95,
-  //     pressure: 1015,
-  //     sunrise: 1639471776,
-  //     sunset: 1639496391,
-  //     temp: 1.9,
-  //     uvi: 0,
-  //     visibility: 570,
-  //     weather: [
-  //       {
-  //         description: "overcast clouds",
-  //         icon: "04d",
-  //         id: 804,
-  //         main: "Clouds",
-  //       },
-  //     ],
-  //     wind_deg: 206,
-  //     wind_gust: 10.04,
-  //     wind_speed: 4.18,
-  //   },
-  //   lat: 56.7417,
-  //   lon: -4.9834,
-  //   minutely: [
-  //     {
-  //       dt: 1639476180,
-  //       precipitation: 0,
-  //     },
-  //   ],
-  //   timezone: "Europe/London",
-  //   timezone_offset: 0,
-  // });
-
-  // useEffect(() => {
-  //   getWeather(route.params.mountain.latitude, route.params.mountain.longitude)
-  //     .then((res) => {
-  //       setWeather(res);
-  //     })
-  //     .catch((error) => console.log(error, "Weather UseEffect"));
-  // }, []);
-
-  // const sunRise = new Date(weather.current.sunrise * 1000)
-  //   .toTimeString()
-  //   .split(" ")[0];
-  // const sunSet = new Date(weather.current.sunset * 1000)
-  //   .toTimeString()
-  //   .split(" ")[0];
-  // console.log(weather.current.weather[0].icon);
   return (
     <ScrollView style={styles.mainview}>
       <View style={styles.container}>
@@ -154,14 +102,14 @@ const SingleMountain = ({ route }) => {
 
 const styles = StyleSheet.create({
   mainview: {
-    backgroundColor: "#FAF9F6",
+    backgroundColor: 0xe0e1f0FF,
   },
   container: {
     backgroundColor: 0x2b3a67ff,
     alignItems: "center",
     marginTop: 10,
     padding: 15,
-    marginBottom: 3,
+    marginBottom: 15,
     marginLeft: 6,
     marginRight: 6,
     borderRadius: 25,
@@ -220,8 +168,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   classification: {
-    marginTop: 20,
-    marginBottom: 20,
+    marginTop: 10,
+    marginBottom: 10,
   },
 });
 

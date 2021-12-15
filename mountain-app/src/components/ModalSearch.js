@@ -101,6 +101,7 @@ const ModalSearch = ({searchBarVisible, setSearchBarVisible, setSearchQueryObj})
                             underlayColor='0x2e2d4dff'
                             onPress={() => {
                                 setSearchQueryObj({});
+                                setSearchBarVisible(false);
                             }}
                             style={styles.searchButton}
                         >

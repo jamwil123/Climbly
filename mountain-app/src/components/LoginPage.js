@@ -60,10 +60,10 @@ const LoginScreen = () => {
   };
 
   return register === false ? (
-    <View style={{ flex: 1, flexDirection: "column" }}>
+    <View style={{ flex: 1, flexDirection: "column", backgroundColor: 0xA0AACCFF }}>
       <ImageBackground
         resizeMode={"cover"}
-        imageStyle={{ opacity: 0.5 }}
+        imageStyle={{ opacity: 0.6 }}
         style={{ flex: 1, justifyContent: "center", resizeMode: "stretch" }} // must be passed from the parent, the number may vary depending upon your screen size
         source={image}
       >
@@ -167,10 +167,13 @@ const styles = StyleSheet.create({
   },
   input: {
     backgroundColor: "white",
+    borderWidth: 1,
+    borderColor: 0x2e2d4dff,
     paddingHorizontal: 15,
     paddingVertical: 10,
     borderRadius: 10,
-    marginTop: 5,
+    marginTop: 10,
+    fontSize: 17
   },
   buttonContainer: {
     width: "60%",
@@ -179,26 +182,24 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   button: {
-    backgroundColor: "#0782F9",
+    backgroundColor: 0x2e2d4dff,
     width: "100%",
     padding: 15,
     borderRadius: 10,
     alignItems: "center",
   },
   buttonOutline: {
-    backgroundColor: "white",
+    backgroundColor: 0xDDDDF0FF,
     marginTop: 5,
-    borderColor: "#0782F9",
+    borderColor: 0x2e2d4dff,
     borderWidth: 2,
   },
   buttonText: {
     color: "white",
-    fontWeight: "700",
-    fontSize: 16,
+    fontSize: 20,
   },
   buttonOutlineText: {
-    color: "#0782F9",
-    fontWeight: "700",
-    fontSize: 16,
+    color: 0x2e2d4dff,
+    fontSize: 18,
   },
 });

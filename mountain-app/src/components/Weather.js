@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, Image, Dimensions } from "react-native";
 import { getWeather } from "../utils/api";
+
 const screenSize = Dimensions.get("screen");
+
 export default function Weather({ lat, lon }) {
   const [weather, setWeather] = useState({
     current: {
@@ -158,22 +160,50 @@ export default function Weather({ lat, lon }) {
   }
 
   return (
-    <View style={styles.container}>
-      {weatherImage()}
-      <Text>{weather.current.temp} °C</Text>
-      <Text>{weather.current.weather[0].description}</Text>
-      <Text>{sunRise}</Text>
-      <Text>{sunSet}</Text>
+    <View>
+      <View style={styles.weatherSectionTitleContainer}>
+        <Text style={styles.weatherSectionTitle}>Current weather:</Text>
+      </View>
+      <View style={styles.container}>
+        <View style={styles.weatherImg}>
+          {weatherImage()}
+        </View>
+        <View style={styles.tempSection}>
+          <Text style={styles.tempNumber}>{weather.current.temp} °C</Text>
+          <Text style={styles.weatherDescription}>{weather.current.weather[0].description}</Text>
+        </View>
+        <View style={styles.sunTimes}>
+          <View style={styles.suntimeContainer}> 
+            <Text style={styles.sunTitleText}>Sunrise at: </Text>
+            <Text style={styles.sunTimeText}>{sunRise}</Text>
+          </View>
+          <View style={styles.suntimeContainer}>
+            <Text style={styles.sunTitleText}>Sunset at: </Text>
+            <Text style={styles.sunTimeText}>{sunSet}</Text>
+          </View>
+        </View>
+      </View>
     </View>
   );
 }
 const styles = StyleSheet.create({
+  weatherSectionTitleContainer: {
+    width: screenSize.width * 0.9,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 10
+  },
+  weatherSectionTitle: {
+    color: 0xFFFFFFFF,
+    fontSize: 20
+  },
   container: {
     backgroundColor: 0x2b3a67ff,
+    width: screenSize.width * 0.9,
     alignItems: "center",
-    marginTop: 10,
-    padding: 15,
-    marginBottom: 3,
+    marginTop: 0,
+    padding: 10,
+    marginBottom: 20,
     marginLeft: 6,
     marginRight: 6,
     borderRadius: 25,
@@ -184,9 +214,51 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.8,
     shadowRadius: 3,
     elevation: 10,
+    display: "flex",
+    flexDirection: 'row'
+  },
+  weatherImg: {
+    height: 100,
+    flex: 1,
   },
   tinyLogo: {
-    width: 50,
-    height: 50,
+    width: 100,
+    height: 100,
   },
+  tempSection: {
+    flex: 1.1,
+    height: 100,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  tempNumber: {
+    fontSize: 29,
+    color: 0xFFFFFFFF
+  },
+  weatherDescription: {
+    fontSize: 12,
+    color: 0xFFFFFFFF,
+  },
+  sunTimes: {
+    flex: 1,
+    height: 100,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  suntimeContainer: {
+    marginTop: 6,
+    marginBottom: 6,
+    alignItems: 'center',
+  },
+  sunContainer: {
+    marginBottom: 5,
+    alignItems: 'center',
+  },
+  sunTitleText: {
+    color: 0xFFFFFFFF, 
+  },
+  sunTimeText: {
+    fontSize: 18,
+    color: 0xFFFFFFFF, 
+  }
 });

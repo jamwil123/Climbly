@@ -80,7 +80,7 @@ const MainView = ({ navigation, sortQuery, searchQueryObj }) => {
               onPress={() => {
                 navigation.push("SingleMountainPage", { mountain: item });
               }}
-              underlayColor="white"
+              underlayColor={0xe0e1f0FF}
               key={item.hillnumber}
             >
               <View ref={HillCardRef}>
