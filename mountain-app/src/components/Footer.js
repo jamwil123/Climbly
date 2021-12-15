@@ -18,15 +18,6 @@ const Footer = ({ navigationRef }) => {
           }}
         />
         <FontAwesome
-          name="search"
-          size={40}
-          color={"black"}
-          style={styles.userbutton}
-          onPress={() => {
-            navigationRef.current.navigate("ModalSearch");
-          }}
-        />
-        <FontAwesome
           name="user"
           size={40}
           color={"black"}
@@ -36,6 +27,7 @@ const Footer = ({ navigationRef }) => {
           }}
         />
       </View>
+     
     </TouchableOpacity>
   );
 };
