@@ -8,16 +8,28 @@ const weatherURL = axios.create({
   baseURL: "http://api.openweathermap.org",
 });
 
-export const getMountains = (lastHillId) => {
+export const getMountains = (lastHillId, sort, order, searchQueryObj) => {
   let query = "";
+
   if (lastHillId !== null) {
     query += `?lastVisibleHill=${lastHillId}`;
   }
-  
+  if (!!sort) {
+    lastHillId === null ? (query += `?sortBy=${sort}`) : (query += `&sortBy=${sort}`);
+  }
 
-  return db.get(`/mountains${query}`).then((res) => {
-    return res.data.mountains;
-  }).catch((error) => console.log(error, '/mountains${query}'));
+  if (!!order) {
+    lastHillId === null && !sort ? (query += `?orderBy=${order}`) : (query += `&orderBy=${order}`);
+  }
+
+  return db
+    .post(`/mountains${query}`, searchQueryObj)
+    .then((res) => {
+      return res.data.mountains;
+    })
+    .catch((err) => {
+      console.log('ERRRRRRRRRRRRRRRROR', err);
+    });
 };
 
 export const postUser = (uid, newUser) => {
@@ -47,3 +59,9 @@ export const getWeather = (lat, lon) => {
     })
     .catch((error) => console.log(error));
 };
+
+// export const sortMountains = (sort, order) => {
+//   return db.get(`/mountains?sortBy=${sort}&orderBy=${order}`).then((res) => {
+//     return res.data.mountains;
+//   });
+// };
