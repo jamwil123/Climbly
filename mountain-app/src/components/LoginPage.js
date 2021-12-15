@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  ImageBackground,
 } from "react-native";
 import { auth } from "../../firebase";
 import { userContext } from "../contexts/userContext";
@@ -19,6 +20,9 @@ const LoginScreen = () => {
   const [avatar_url, setAvatar_url] = useState("");
   const { currentUser, setCurrentUser } = useContext(userContext);
   const [register, setRegister] = useState(false);
+  const image = {
+    uri: "https://cdn.britannica.com/03/75503-050-F65891FA/volcanic-cone-Japan-Mount-Fuji.jpg",
+  };
 
   const handleSignUp = () => {
     auth
@@ -56,40 +60,56 @@ const LoginScreen = () => {
   };
 
   return register === false ? (
-    <KeyboardAvoidingView style={styles.container} behavior="padding">
-      <View style={styles.inputContainer}>
-        <TextInput
-          placeholder="Email"
-          value={email}
-          onChangeText={(text) => setEmail(text)}
-          style={styles.input}
-          key={currentUser.userToken}
-        />
-        <TextInput
-          placeholder="Password"
-          value={password}
-          onChangeText={(text) => setPassword(text)}
-          style={styles.input}
-          secureTextEntry
-        />
-      </View>
+    <View style={{ flex: 1, flexDirection: "column" }}>
+      <ImageBackground
+        resizeMode={"cover"}
+        imageStyle={{ opacity: 0.5 }}
+        style={{ flex: 1, justifyContent: "center", resizeMode: "stretch" }} // must be passed from the parent, the number may vary depending upon your screen size
+        source={image}
+      >
+        <KeyboardAvoidingView style={styles.container} behavior="padding">
+          <View style={styles.inputContainer}>
+            <TextInput
+              placeholder="Email"
+              value={email}
+              onChangeText={(text) => setEmail(text)}
+              style={styles.input}
+              key={currentUser.userToken}
+            />
+            <TextInput
+              placeholder="Password"
+              value={password}
+              onChangeText={(text) => setPassword(text)}
+              style={styles.input}
+              secureTextEntry
+            />
+          </View>
 
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={handleLogin} style={styles.button}>
-          <Text style={styles.buttonText}>Login</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={(event) => {
-            event.preventDefault();
-            setRegister(true);
-          }}
-          style={[styles.button, styles.buttonOutline]}
-        >
-          <Text style={styles.buttonOutlineText}>Not got an account?</Text>
-        </TouchableOpacity>
-      </View>
-    </KeyboardAvoidingView>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity onPress={handleLogin} style={styles.button}>
+              <Text style={styles.buttonText}>Login</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={(event) => {
+                event.preventDefault();
+                setRegister(true);
+              }}
+              style={[styles.button, styles.buttonOutline]}
+            >
+              <Text style={styles.buttonOutlineText}>Not got an account?</Text>
+            </TouchableOpacity>
+          </View>
+        </KeyboardAvoidingView>
+      </ImageBackground>
+    </View>
   ) : (
+    <View style={{ flex: 1, flexDirection: "column" }}>
+      <ImageBackground
+        resizeMode={"cover"}
+        imageStyle={{ opacity: 0.5 }}
+        style={{ flex: 1, justifyContent: "center", resizeMode: "stretch" }} // must be passed from the parent, the number may vary depending upon your screen size
+        source={image}
+      >
     <KeyboardAvoidingView style={styles.container} behavior="padding">
       <View style={styles.inputContainer}>
         <TextInput
@@ -129,6 +149,8 @@ const LoginScreen = () => {
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
+    </ImageBackground>
+    </View>
   );
 };
 

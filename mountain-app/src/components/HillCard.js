@@ -44,6 +44,13 @@ const styles = StyleSheet.create({
   difficulty: {
     color: "#ffffff",
     fontSize: 20,
+    paddingTop: 10,
+    borderRadius: 10,
+  borderWidth: 1,
+  borderColor: '#fff',
+  padding: 5,
+  backgroundColor: 'black',
+  
   },
   heightAndDifficulty: {
     display:'flex',
@@ -89,7 +96,7 @@ const styles = StyleSheet.create({
     display:'flex',
     flex:2, 
     alignContent: 'flex-end',
-    paddingTop: 2
+    paddingTop: 10
     
   },
 });

@@ -17,6 +17,6 @@ const UserMain = () => {
   const { currentUser, setCurrentUser } = useContext(userContext);
 
   return !currentUser.userToken ? <LoginPage /> : <UserPage />;
-};
+}
 
 export default UserMain;
