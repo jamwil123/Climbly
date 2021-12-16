@@ -37,7 +37,7 @@ export default function App() {
                 backgroundColor: 0xAAADC4FF,
               },
 
-              headerTitle: "Mountains",
+              headerTitle: "Climbly",
               headerLeft: () => (
                 <Pressable
                   style={styles.sortButton}
