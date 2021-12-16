@@ -1,16 +1,25 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Image, StyleSheet, Text, View, Dimensions } from "react-native";
+import { userContext } from "../contexts/userContext";
 
 const screenSize = Dimensions.get("screen");
 
 const HillCard = (props) => {
+  const { currentUser } = useContext(userContext);
+  
+  let hillCardBackgroundColor;
+  let difficultyRating;
+  let difficultyColor;
+  
+  const isClimbed = currentUser.hillsClimbed.filter(mountain => mountain.hillname === props.hillObject.hillname).length > 0 ? true : false
+
+  isClimbed ? hillCardBackgroundColor = styles.hillCardBackgroundColorClimbed : hillCardBackgroundColor = styles.hillCardBackgroundColorUnClimbed
+
   let hillname = props.hillObject.hillname;
   hillname.includes("[")
     ? (hillname = hillname.slice(0, hillname.indexOf("[")))
     : hillname;
 
-  let difficultyRating;
-  let difficultyColor;
 
   if (props.hillObject.feet <= 2200) {
     difficultyRating = "Easy";
@@ -24,7 +33,7 @@ const HillCard = (props) => {
   }
 
   return (
-    <View style={styles.hillcard}>
+    <View style={[styles.hillcard, hillCardBackgroundColor]}>
       <View>
         <Image
           source={{ uri: props.hillObject.img_hres_url }}
@@ -74,7 +83,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   hillcard: {
-    backgroundColor: 0x2b3a67ff,
     alignItems: "center",
     height: screenSize.height * 0.39,
     marginTop: 10,
@@ -90,6 +98,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.6,
     shadowRadius: 3,
     elevation: 5,
+  },
+  hillCardBackgroundColorUnClimbed: {
+    backgroundColor: 0x2b3a67ff,
+  },
+  hillCardBackgroundColorClimbed: {
+    backgroundColor: 0x284A1EFF,
   },
   image: {
     borderRadius: 14,

@@ -7,7 +7,9 @@ import { userContext } from "../contexts/userContext";
 const screenSize = Dimensions.get("screen");
 
 export default function UserMap() {
+
   const { currentUser } = useContext(userContext);
+
   return (
     <View style={styles.container}>
       <View style={styles.userTitle}>
@@ -93,6 +95,8 @@ const styles = StyleSheet.create({
   },
   userAvatar: {
     borderRadius: screenSize.width * 0.15,
+    borderWidth: 1,
+    borderColor: 0x000000FF,
     width: screenSize.width * 0.35,
     height: screenSize.width * 0.35,
   },
