@@ -10,8 +10,11 @@ const HillCard = (props) => {
   let hillCardBackgroundColor;
   let difficultyRating;
   let difficultyColor;
+  let isClimbed
   
-  const isClimbed = currentUser.hillsClimbed.filter(mountain => mountain.hillname === props.hillObject.hillname).length > 0 ? true : false
+  if (currentUser.hillsClimbed !== undefined) {
+    isClimbed = currentUser.hillsClimbed.filter(mountain => mountain.hillname === props.hillObject.hillname).length > 0 ? true : false
+  }
 
   isClimbed ? hillCardBackgroundColor = styles.hillCardBackgroundColorClimbed : hillCardBackgroundColor = styles.hillCardBackgroundColorUnClimbed
 
